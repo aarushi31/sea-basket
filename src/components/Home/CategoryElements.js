@@ -19,7 +19,7 @@ function CategoryElements() {
             })
             setCategory(category)
             console.log(category);
-            console.log(categories[0].title)
+            console.log(categories)
         })
         .catch(err=>console.log(err))
     },[])
