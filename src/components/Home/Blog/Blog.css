@@ -1,0 +1,30 @@
+.blog{
+    -webkit-box-shadow: -1px 3px 15px 5px rgba(0,0,0,0.38); 
+    box-shadow: -1px 3px 15px 5px rgba(0,0,0,0.38);
+    padding: 4rem;
+    border-radius: 25px;
+    width:"70vw";
+    height:"30vh";
+    margin-top: 6rem;
+    text-align: left;
+}
+
+.blog-title{
+    font-weight: bold;
+    font-size: larger;
+}
+
+.blog-content{
+    margin-top: 1.5rem;
+    width: 70%;
+}
+
+.read-more{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    text-transform: capitalize;
+    color:lightskyblue;
+    font-weight: bolder;
+    margin-top: 1rem;
+}

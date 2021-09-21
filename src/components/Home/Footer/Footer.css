@@ -1,0 +1,34 @@
+.footer{
+    width: 100vw;
+    height: 30vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+    background-color:#0E79BD ;
+}
+
+.logo{
+    width:10%;
+}
+
+.lists{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 20vw;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+.copyright{
+    width: 100vw;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+    background-color:#0E79BD ;
+    font-size: smaller;
+}
+

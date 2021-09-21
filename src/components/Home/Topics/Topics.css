@@ -1,0 +1,35 @@
+.topic-box{
+    margin-top: 6rem;
+    -webkit-box-shadow: -1px 3px 15px 5px rgba(0,0,0,0.38); 
+    box-shadow: -1px 3px 15px 5px rgba(0,0,0,0.38);
+    text-align: left;
+    border-radius: 25px;
+    background-image: url('../../../images/topic2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 30vh;
+}
+.topic-title{
+    font-weight: bold;
+    font-size: larger;
+}
+
+.topic-content{
+    margin-top: 1.5rem;
+    width: 50%;
+}
+
+.tread-more{
+    text-transform: capitalize;
+    color:lightskyblue;
+    font-weight: bolder;
+    margin-top: 2rem;
+}
+
+.gradient{
+    height: 30vh;
+    border-radius: 25px;
+    width: 100%;
+    padding: 4rem;
+    background-image: linear-gradient(to right,white,rgba(255,255,255,0.3));
+}

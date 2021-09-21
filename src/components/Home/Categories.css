@@ -1,0 +1,25 @@
+.heading{
+    font-size: 2.5rem;
+}
+.subheading{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+.subHeading2{
+    margin-top: 3rem;
+    font-size: 1.7rem;
+}
+
+.box{
+    box-shadow: -6px -4px 14px -3px rgba(0,0,0,0.42);
+    -webkit-box-shadow: -6px -4px 14px -3px rgba(0,0,0,0.42);
+    -moz-box-shadow: -6px -4px 14px -3px rgba(0,0,0,0.42);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    flex-direction: column;
+    border-radius: 25px;
+}
