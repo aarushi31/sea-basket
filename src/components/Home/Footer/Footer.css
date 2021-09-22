@@ -4,21 +4,24 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 2rem;
+    padding: 60px 150px;
     background-color:#0E79BD ;
+    margin-top: 150px;
 }
 
 .logo{
-    width:10%;
+    width:203px;
+    height: 70px;
 }
 
 .lists{
     color: white;
     display: flex;
     justify-content: space-between;
-    width: 20vw;
-    line-height: 30px;
-    font-weight: bold;
+    width: 508px;
+    line-height: 28.13px;
+    font-weight: 500;
+    font-size: 18px;
 }
 
 .copyright{
@@ -32,3 +35,11 @@
     font-size: smaller;
 }
 
+.l2{
+    margin-left: 78px;
+    width: 279px;
+}
+
+.l1{
+    width: 151px;
+}

@@ -3,7 +3,7 @@ import {Data} from './Data'
 import styled from 'styled-components'
 import {IconContext} from 'react-icons'
 import {FiPlus,FiMinus} from 'react-icons/fi'
-
+import darrow from '../../../images/icons/arrow.svg'
 
 const FaqSection=styled.div`
     display:flex;
@@ -15,16 +15,17 @@ const FaqSection=styled.div`
     background:#fff;
     width:100vw;
     padding:7rem;
-    
+    margin-top:70px;
     
 `;
 
 
 const Container=styled.div`
-    box-shadow:2px 10px 35px 1px rgba(153,153,153,0.3);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
     padding:4rem;
     border-radius:25px;
-    width:85vw;
+    width:1200px;
+
 `;
 
 const Wrap=styled.div`
@@ -34,13 +35,7 @@ const Wrap=styled.div`
     width:100%;
     text-align:left;
     cursor:pointer;
-
-    h1{
-        padding:2rem;
-        font-size:2rem;
-        margin-top:4rem;
-    }
-
+    padding-top:100px;
     span{
         color:#0E79BD;
         margin-right:1.5rem;
@@ -55,9 +50,7 @@ const Dropdown=styled.div`
     justify-content:center;
     align-items:center;
 
-    p{
-        font-size:1.5rem;
-    }
+    
 `;
 
 function Faq() {
@@ -73,24 +66,26 @@ function Faq() {
 
 
     return (
+        
+            
         <IconContext.Provider value={{
             color:'#000',size:"25px"
         }}>
-        <center><h2 style={{fontSize:"2.5rem"}}>FAQs</h2></center>
+        
         <FaqSection>
             <Container>
                 {Data.map((item,index)=>{
                     return(
-                        <div style={{marginTop:"3rem"}}>
+                        <div>
                             <Wrap onClick={()=>toggle(index)}
                             key={index}>
-                            <h2>{item.question}</h2>
-                            <span>{clicked==index?<FiMinus style={{color:"#0E79BD"}}/>:<FiPlus style={{color:"#0E79BD"}}/>}</span>
+                            <p style={{fontSize:"28px",fontWeight:"600",lineHeight:"32.81px"}}>{item.question}</p>
+                            <span>{clicked==index?<FiMinus style={{color:"#0E79BD"}}/>:<img src={darrow} style={{color:"#0E79BD"}}/>}</span>
                             </Wrap>
                             {
                                 clicked===index?(
                                     <Dropdown>
-                                        <p>{item.answer}</p>
+                                        <p style={{fontSize:"26px",fontWeight:"400",lineHeight:"30.47px",marginTop:"90px"}}>{item.answer}</p>
                                     </Dropdown>
                                 ):null
 
@@ -102,6 +97,7 @@ function Faq() {
             </Container>
         </FaqSection>
         </IconContext.Provider>
+        
     )
 }
 

@@ -12,13 +12,13 @@ function Footer() {
             <div className="lists">
                 <div className="l1">
                     <span>Support</span><br/>
-                    <span>About us</span><br/>
+                    <span>About Us</span><br/>
                     <span>Privacy Policy</span><br/>
                 </div>
                 <div className="l2">
-                    <span>Terms and Condition</span><br/>
-                    <span>Return n Refund Policy</span><br/>
-                    <span>Shipping n Delivery Policy</span><br/>
+                    <span>Terms &amp; Condition</span><br/>
+                    <span>Return &amp; Refund Policy</span><br/>
+                    <span>Shipping &amp; Delivery Policy</span><br/>
                 </div>
                 
             </div>

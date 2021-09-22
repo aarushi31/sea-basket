@@ -1,0 +1,124 @@
+.product-container{
+    width: 100vw;
+    padding:50px 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.filters{
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons{
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+#select-filter{
+    width: 298px;
+    height: 46px;
+    border: 1px solid gray;
+    border-radius: 30px;
+}
+.filter-label{
+    font-size: 28px;
+    font-weight: 500;
+}
+.input-box{
+    width: 203px;
+    height: 46px;
+    border: 1px solid gray;
+    border-radius: 30px;
+    padding: 24px 30px;
+    margin-left: 50px;
+}
+
+.btn{
+    width: 344px;
+    height: 72px;
+    padding: 18px 79px;
+    border-radius: 30px;
+    outline: none;
+    font-size: 26px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.remove{
+    border: 3px solid #0E79BD;
+    color: #0E79BD;
+    background-color: white;
+}
+.apply{
+    background-color: #0E79BD;
+    color: white;
+    border: none;
+}
+.remove:hover{
+    background-color: #0E79BD;
+    color: white;
+    border: none;
+}
+.apply:hover{
+    border: 3px solid #0E79BD;
+    color: #0E79BD;
+    background-color: white;
+}
+.line2{
+    width: 1200px;
+    background-color: gray;
+    margin-top: 30px;
+    opacity: 0.2;
+    border: 1px solid black;
+}
+.products{
+    width: 1200px;
+    padding: 100px 0;
+}
+
+.product{
+    width: 257px;
+    height: 424px;
+    padding: 20px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.product-img{
+    width: 217px;
+    height: 189px;
+    border-radius: 12px;
+}
+.prod-name{
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.disc-price{
+    font-size: 24px;
+    font-weight: 500;
+    color: #0E79BD;
+    margin-top: 20px;
+}
+.orig-price{
+    font-size: 18px;
+    font-weight: 500;
+    color: grey;
+    text-decoration: line-through;
+    margin-top: 16px;
+}
+.add{
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #0E79BD;
+    margin-top: 20px;
+    font-size: 26px;
+    font-weight: 700;
+    cursor: pointer;
+}

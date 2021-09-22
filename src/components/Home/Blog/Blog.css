@@ -1,22 +1,24 @@
 .blog{
-    -webkit-box-shadow: -1px 3px 15px 5px rgba(0,0,0,0.38); 
-    box-shadow: -1px 3px 15px 5px rgba(0,0,0,0.38);
-    padding: 4rem;
-    border-radius: 25px;
-    width:"70vw";
-    height:"30vh";
-    margin-top: 6rem;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    padding: 50px;
+    width:1200px;
+    height:360px;
+    margin-top: 70px;
     text-align: left;
 }
 
 .blog-title{
-    font-weight: bold;
-    font-size: larger;
+    
+    font-weight: 600;
+    font-size: 30px;
 }
 
 .blog-content{
-    margin-top: 1.5rem;
-    width: 70%;
+    margin-top: 50px;
+    width: 1100px;
+    font-size: 26px;
+    font-weight: 400;
 }
 
 .read-more{
@@ -24,7 +26,10 @@
     display: flex;
     justify-content: right;
     text-transform: capitalize;
-    color:lightskyblue;
-    font-weight: bolder;
-    margin-top: 1rem;
+    color: #0E79BD;
+    font-weight: 500;
+    font-size: 30px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+   
 }

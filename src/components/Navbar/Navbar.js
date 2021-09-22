@@ -7,7 +7,7 @@ function Navbar() {
         <>
             <Nav>
                 <NavLink to="/">
-                    <img src={logo} alt="Logo" style={{width:"100px"}}/>
+                    <img src={logo} alt="Logo" style={{width:"183px"}}/>
                 </NavLink>
                 <Bars/>
                 <NavMenu>
