@@ -13,7 +13,7 @@ function Home() {
             <Cover/>
             <Categories/>
             <ProductVideo/>
-            <center><h2 style={{fontSize:"48px",fontWeight:"500",marginTop:"150px"}}>FAQs</h2></center>
+            <center><h2 style={{fontSize:"36px",fontWeight:"500",marginTop:"150px"}}>FAQs</h2></center>
             <Faq/>
             <Blog/>
             <Topics/>

@@ -19,17 +19,17 @@
     margin-top: 50px;
 }
 #select-filter{
-    width: 298px;
+    width: 200px;
     height: 46px;
     border: 1px solid gray;
     border-radius: 30px;
 }
 .filter-label{
-    font-size: 28px;
+    font-size: 18px;
     font-weight: 500;
 }
 .input-box{
-    width: 203px;
+    width: 170px;
     height: 46px;
     border: 1px solid gray;
     border-radius: 30px;
@@ -38,17 +38,17 @@
 }
 
 .btn{
-    width: 344px;
-    height: 72px;
-    padding: 18px 79px;
+    width: 244px;
+    height: 52px;
+    padding: 10px 50px;
     border-radius: 30px;
     outline: none;
-    font-size: 26px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
 }
 .remove{
-    border: 3px solid #0E79BD;
+    border: 1px solid #0E79BD;
     color: #0E79BD;
     background-color: white;
 }
@@ -63,7 +63,7 @@
     border: none;
 }
 .apply:hover{
-    border: 3px solid #0E79BD;
+    border: 1px solid #0E79BD;
     color: #0E79BD;
     background-color: white;
 }
@@ -94,19 +94,19 @@
     border-radius: 12px;
 }
 .prod-name{
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
     margin-top: 20px;
 }
 
 .disc-price{
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 500;
     color: #0E79BD;
     margin-top: 20px;
 }
 .orig-price{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: grey;
     text-decoration: line-through;
@@ -118,7 +118,7 @@
     text-transform: uppercase;
     color: #0E79BD;
     margin-top: 20px;
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 700;
     cursor: pointer;
 }

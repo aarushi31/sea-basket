@@ -1,23 +1,23 @@
 .category-heading{
     /* margin-left: 120px; */
-    font-size: 36px;
+    font-size: 22px;
     font-weight: 500;
     position: relative;
-    right:480px;    
+    right:520px;    
 }
 .category-heading2{
     /* margin-left: 120px; */
-    font-size: 36px;
-    font-weight: 500;
-    position: relative;
-    right:450px;    
-}
-.category-heading3{
-    /* margin-left: 120px; */
-    font-size: 36px;
+    font-size: 22px;
     font-weight: 500;
     position: relative;
     right:500px;    
+}
+.category-heading3{
+    /* margin-left: 120px; */
+    font-size: 22px;
+    font-weight: 500;
+    position: relative;
+    right:540px;    
 }
 .line{
     margin-top: 50px;

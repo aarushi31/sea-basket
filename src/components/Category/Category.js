@@ -6,7 +6,7 @@ import Products from './Products/Products'
 function Category() {
     return (
         <div style={{width:"100vw",marginTop:"200px",padding:"0,120px",overflowX:"hidden"}}>
-            <center><h2 style={{fontSize:"48px",fontWeight:"500",color:"#0E79BD"}}>MARKET</h2></center>
+            <center><h2 style={{fontSize:"36px",fontWeight:"500",color:"#0E79BD"}}>MARKET</h2></center>
             <CategorySection/>
             <Products/>
             <Footer/>

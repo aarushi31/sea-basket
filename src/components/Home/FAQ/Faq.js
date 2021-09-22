@@ -35,7 +35,7 @@ const Wrap=styled.div`
     width:100%;
     text-align:left;
     cursor:pointer;
-    padding-top:100px;
+    padding-top:80px;
     span{
         color:#0E79BD;
         margin-right:1.5rem;
@@ -54,7 +54,7 @@ const Dropdown=styled.div`
 `;
 
 function Faq() {
-    const [clicked,setClicked]=useState(false);
+    const [clicked,setClicked]=useState(null);
 
     const toggle=index=>{
         if(clicked===index){
@@ -79,13 +79,13 @@ function Faq() {
                         <div>
                             <Wrap onClick={()=>toggle(index)}
                             key={index}>
-                            <p style={{fontSize:"28px",fontWeight:"600",lineHeight:"32.81px"}}>{item.question}</p>
+                            <p style={{fontSize:"20px",fontWeight:"600",lineHeight:"32.81px"}}>{item.question}</p>
                             <span>{clicked==index?<FiMinus style={{color:"#0E79BD"}}/>:<img src={darrow} style={{color:"#0E79BD"}}/>}</span>
                             </Wrap>
                             {
                                 clicked===index?(
                                     <Dropdown>
-                                        <p style={{fontSize:"26px",fontWeight:"400",lineHeight:"30.47px",marginTop:"90px"}}>{item.answer}</p>
+                                        <p style={{fontSize:"18px",fontWeight:"400",lineHeight:"30.47px",marginTop:"90px"}}>{item.answer}</p>
                                     </Dropdown>
                                 ):null
 

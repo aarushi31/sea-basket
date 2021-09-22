@@ -1,9 +1,9 @@
 .heading{
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 500;
 }
 .subheading{
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 400;
     margin-top: 2rem;
 }
@@ -14,7 +14,7 @@
     font-weight: 500;
     /* text-align: left; */
     position: relative;
-    right:480px;
+    right:520px;
     top:100px;
 }
 

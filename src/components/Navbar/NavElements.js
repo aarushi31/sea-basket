@@ -22,7 +22,7 @@ export const NavLink=styled(Link)`
     padding:0 50px;
     height:100%;
     cursor:pointer;
-    font-size:24px;
+    font-size:20px;
     font-weight:700;
 
     &.active{
@@ -72,7 +72,7 @@ export const NavBtnLink=styled(Link)`
     padding:15px 75px;
     color:#fff;
     border:none;
-    font-size:24px;
+    font-size:20px;
     outline:none;
     cursor:pointer;
     transition:all 0.2s ease-in-out;

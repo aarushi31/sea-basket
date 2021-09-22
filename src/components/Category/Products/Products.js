@@ -6,7 +6,7 @@ function Products() {
     return (
         <div className="product-container">
             <div className="filters">
-                <span className="filter-label">Price</span>
+                <span className="filter-label" style={{marginTop:"10px"}}>Price</span>
                 <select name="filter" id="select-filter">
                     <option value="" disabled selected>Select</option>
                     <option value="lowToHigh">Low to high</option>
