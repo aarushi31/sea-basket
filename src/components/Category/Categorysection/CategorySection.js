@@ -13,28 +13,28 @@ function CategorySection() {
             <div style={{display:"flex",width:"1200px",justifyContent:"space-around",marginTop:"60px"}}>
             
             <div className="box">
-                <img src={c1} style={{width:"205px",height:"100px"}}/>
-                <span style={{fontSize:"18px",fontWeight:"500"}}>FISH</span>
+                <img src={c1} style={{width:"150px",height:"80px"}}/>
+                <span style={{fontSize:"16px",fontWeight:"500"}}>FISH</span>
             </div>
             <div className="box">
-                <img src={c0} style={{width:"205px",height:"100px"}}/>
-                <span style={{fontSize:"18px",fontWeight:"500"}}>CRUSTACEANS</span>
+                <img src={c0} style={{width:"150px",height:"80px"}}/>
+                <span style={{fontSize:"16px",fontWeight:"500"}}>CRUSTACEANS</span>
             </div>
             <div className="box">
-                <img src={c2} style={{width:"205px",height:"100px"}}/>
-                <span style={{fontSize:"18px",fontWeight:"500"}}>EXOTIC</span>
+                <img src={c2} style={{width:"150px",height:"80px"}}/>
+                <span style={{fontSize:"16px",fontWeight:"500"}}>EXOTIC</span>
             </div>
         </div>
         <h3 className="category-heading2" style={{marginTop:"100px"}}>SUB-CATEGORIES</h3>
-            <div style={{display:"flex",width:"1200px",justifyContent:"flex-start",marginTop:"60px"}}>
+            <div style={{display:"flex",width:"1200px",justifyContent:"flex-start",marginTop:"60px",padding:"0 20px"}}>
             
             <div className="box2">
-                <img src={sub1} style={{width:"310px",height:"188px",paddingBottom:"30px"}}/>
-                <span style={{fontSize:"18px",fontWeight:"500",marginTop:"20px"}}>SEA FISH</span>
+                <img src={sub1} style={{width:"310px",height:"188px",paddingBottom:"35px"}}/>
+                <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>SEA FISH</span>
             </div>
             <div className="box2" style={{marginLeft:"122px"}}>
-                <img src={sub2} style={{width:"310px",height:"188px",paddingBottom:"30px"}}/>
-                <span style={{fontSize:"18px",fontWeight:"500",marginTop:"20px"}}>RIVER FISH</span>
+                <img src={sub2} style={{width:"310px",height:"188px",paddingBottom:"35px"}}/>
+                <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>RIVER FISH</span>
             </div>
         </div>
         <h3 className="category-heading3" style={{marginTop:"100px"}}>PRODUCTS</h3>

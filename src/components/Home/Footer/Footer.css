@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 60px 150px;
+    padding: 60px 100px;
     background-color:#0E79BD ;
     margin-top: 150px;
 }
@@ -21,7 +21,7 @@
     width: 508px;
     line-height: 28.13px;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .copyright{

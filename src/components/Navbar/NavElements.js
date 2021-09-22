@@ -7,7 +7,7 @@ export const Nav=styled.nav`
     height:80px;
     display:flex;
     justify-content:space-between;
-    padding:40px 120px;
+    padding:40px 70px;
     z-index:10;
     position:fixed;
     top:0;
@@ -22,7 +22,7 @@ export const NavLink=styled(Link)`
     padding:0 50px;
     height:100%;
     cursor:pointer;
-    font-size:20px;
+    font-size:16px;
     font-weight:700;
 
     &.active{
@@ -58,7 +58,8 @@ export const NavMenu=styled.div`
 export const NavBtn=styled.nav`
     display:flex;
     align-items:center;
-    margin-right:24px;
+    justify-content:center;
+    
     
 
 
@@ -67,12 +68,12 @@ export const NavBtn=styled.nav`
 
 export const NavBtnLink=styled(Link)`
     border-radius:4px;
-    width:211px;
+    width:200px;
     background:#0E79BD;
     padding:15px 75px;
     color:#fff;
     border:none;
-    font-size:20px;
+    font-size:16px;
     outline:none;
     cursor:pointer;
     transition:all 0.2s ease-in-out;

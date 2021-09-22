@@ -24,19 +24,19 @@ function CategoryElements() {
     //     .catch(err=>console.log(err))
     // },[])
     return (
-        <div style={{display:"flex",width:"1200px",justifyContent:"space-around",marginTop:"160px"}}>
+        <div style={{display:"flex",width:"1200px",justifyContent:"space-around",marginTop:"100px"}}>
             
             <div className="box">
                 <img src={c1} style={{width:"205px",height:"100px"}}/>
-                <span style={{fontSize:"18px",fontWeight:"500"}}>Fish</span>
+                <span style={{fontSize:"16px",fontWeight:"500"}}>Fish</span>
             </div>
             <div className="box">
                 <img src={c0} style={{width:"205px",height:"100px"}}/>
-                <span style={{fontSize:"18px",fontWeight:"500"}}>Crustaceans</span>
+                <span style={{fontSize:"16px",fontWeight:"500"}}>Crustaceans</span>
             </div>
             <div className="box">
                 <img src={c2} style={{width:"205px",height:"100px"}}/>
-                <span style={{fontSize:"18px",fontWeight:"500"}}>Exotic</span>
+                <span style={{fontSize:"16px",fontWeight:"500"}}>Exotic</span>
             </div>
         </div>
     )

@@ -35,7 +35,7 @@ const Wrap=styled.div`
     width:100%;
     text-align:left;
     cursor:pointer;
-    padding-top:80px;
+    padding-top:30px;
     span{
         color:#0E79BD;
         margin-right:1.5rem;
@@ -79,13 +79,13 @@ function Faq() {
                         <div>
                             <Wrap onClick={()=>toggle(index)}
                             key={index}>
-                            <p style={{fontSize:"20px",fontWeight:"600",lineHeight:"32.81px"}}>{item.question}</p>
+                            <p style={{fontSize:"18px",fontWeight:"600",lineHeight:"32.81px"}}>{item.question}</p>
                             <span>{clicked==index?<FiMinus style={{color:"#0E79BD"}}/>:<img src={darrow} style={{color:"#0E79BD"}}/>}</span>
                             </Wrap>
                             {
                                 clicked===index?(
                                     <Dropdown>
-                                        <p style={{fontSize:"18px",fontWeight:"400",lineHeight:"30.47px",marginTop:"90px"}}>{item.answer}</p>
+                                        <p style={{fontSize:"16px",fontWeight:"400",lineHeight:"20.47px",marginTop:"30px"}}>{item.answer}</p>
                                     </Dropdown>
                                 ):null
 

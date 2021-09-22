@@ -6,37 +6,37 @@
     background-image: url('../../../images/topic2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 451px;
+    height: 351px;
     width: 1200px;
 }
 .topic-title{
     font-weight: 600;
-    font-size: 22px;
-    line-height: 33px;
+    font-size: 18px;
+    line-height: 23px;
     text-transform: uppercase;
 }
 
 .topic-content{
     margin-top: 50px;
     width: 596px;
-    height:183px;
-    font-size: 18px;
-    line-height: 30px;
+    height:153px;
+    font-size: 16px;
+    line-height: 20px;
 }
 
 .tread-more{
     color: #0E79BD;
-    margin-top: 50px;
+    
     
     font-weight: 500;
-    font-size: 20px;
-    line-height: 35px;
+    font-size: 18px;
+    line-height: 25px;
     letter-spacing: 0.09em;
     text-transform: uppercase;
 }
 
 .gradient{
-    height: 451px;
+    height: 351px;
     border-radius: 25px;
     width: 1200px;
     padding: 50px;

@@ -1,20 +1,20 @@
 .category-heading{
     /* margin-left: 120px; */
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 500;
     position: relative;
     right:520px;    
 }
 .category-heading2{
     /* margin-left: 120px; */
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 500;
     position: relative;
     right:500px;    
 }
 .category-heading3{
     /* margin-left: 120px; */
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 500;
     position: relative;
     right:540px;    
@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 380px;
+    width: 340px;
     height: 188px;
     flex-direction: column;
     border-radius: 25px;

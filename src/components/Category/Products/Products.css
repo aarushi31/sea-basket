@@ -38,13 +38,13 @@
 }
 
 .btn{
-    width: 244px;
-    height: 52px;
-    padding: 10px 50px;
+    width: 200px;
+    height: 42px;
+    padding: 10px 40px;
     border-radius: 30px;
     outline: none;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
 }
 .remove{
@@ -80,8 +80,8 @@
 }
 
 .product{
-    width: 257px;
-    height: 424px;
+    width: 237px;
+    height: 324px;
     padding: 20px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
@@ -89,24 +89,24 @@
     flex-direction: column;
 }
 .product-img{
-    width: 217px;
-    height: 189px;
+    width: 195px;
+    height: 110px;
     border-radius: 12px;
 }
 .prod-name{
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     margin-top: 20px;
 }
 
 .disc-price{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: #0E79BD;
     margin-top: 20px;
 }
 .orig-price{
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
     color: grey;
     text-decoration: line-through;
@@ -117,8 +117,8 @@
     text-align: center;
     text-transform: uppercase;
     color: #0E79BD;
-    margin-top: 20px;
-    font-size: 20px;
+    margin-top: 17px;
+    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
 }
