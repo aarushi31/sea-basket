@@ -48,7 +48,7 @@ function Navbar() {
     <Rbs.Nav>
       <Rbs.Nav.Link href="/category" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>Category</Rbs.Nav.Link>
       <Rbs.Nav.Link href="#faq" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>FAQ</Rbs.Nav.Link>
-      <Rbs.Nav.Link href="/cart" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>Cart</Rbs.Nav.Link>
+      <Rbs.Nav.Link href="/cart" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>My Cart</Rbs.Nav.Link>
       <Rbs.Nav.Link href="/login" style={{width:'100px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center'}}>
         Login
       </Rbs.Nav.Link>
