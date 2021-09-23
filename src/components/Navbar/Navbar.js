@@ -2,6 +2,7 @@ import React from 'react'
 import {Nav, NavLink, Bars,NavMenu, NavBtn, NavBtnLink} from './NavElements'
 import logo from '../../images/logo1.png'
 import * as Rbs from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
     return (
@@ -30,7 +31,7 @@ function Navbar() {
         // </>
         <Rbs.Navbar collapseOnSelect expand="lg" bg="light" variant="light" sticky='top'>
   <Rbs.Container>
-  <Rbs.Navbar.Brand href="/"><img src={logo} style={{width:"170px"}}/></Rbs.Navbar.Brand>
+  <Rbs.Navbar.Brand><Link to="/"><img src={logo} style={{width:"170px"}}/></Link></Rbs.Navbar.Brand>
   <Rbs.Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Rbs.Navbar.Collapse id="responsive-navbar-nav">
     <Rbs.Nav className="me-auto">

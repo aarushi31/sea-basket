@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from '../Home/Footer/Footer'
 import CategorySection from './Categorysection/CategorySection'
-import Products from './Products/Products'
+import Products from './Productsection/Products'
 
 function Category() {
     return (
