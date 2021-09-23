@@ -1,7 +1,7 @@
 .blog{
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
-    padding: 50px;
+    padding: 50px 70px;
     width:1200px;
     height:280px;
     margin-top: 70px;
@@ -16,7 +16,7 @@
 
 .blog-content{
     margin-top: 50px;
-    width: 1100px;
+    width: 1000px;
     font-size: 16px;
     font-weight: 400;
 }
