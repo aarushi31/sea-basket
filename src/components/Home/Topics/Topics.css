@@ -1,3 +1,14 @@
+.topic-cont{
+    width:100vw;
+    text-align:center;
+    margin-top:50px;
+    padding:7rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
 .topic-box{
     margin-top: 70px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
@@ -26,8 +37,6 @@
 
 .tread-more{
     color: #0E79BD;
-    
-    
     font-weight: 500;
     font-size: 18px;
     line-height: 25px;
@@ -41,4 +50,26 @@
     width: 1200px;
     padding: 50px;
     background-image: linear-gradient(to right,white,rgba(255,255,255,0.3));
+    position: relative;
+    right: 12px;
+}
+
+
+
+@media screen and (max-width:760px) {
+    .gradient{
+        min-width:100%;
+        min-height: 300px;
+        padding: 10px;
+    }
+    .topic-content{
+        max-width: 80vw;
+        margin-top: 10px;
+    }
+    .topic-box{
+        min-height: 300px;
+    }
+    .tread-more{
+        margin-top: 70px;
+    }
 }

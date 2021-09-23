@@ -4,7 +4,7 @@ import {db,auth} from '../../firebase'
 import c1 from '../../images/c1.png';
 import c2 from '../../images/c2.png';
 import c0 from '../../images/c0.png';
-import Categories from './Categories';
+import {Container} from 'react-bootstrap'
 
 function CategoryElements() {
     // const [categories,setCategory]=useState([]);
@@ -24,7 +24,7 @@ function CategoryElements() {
     //     .catch(err=>console.log(err))
     // },[])
     return (
-        <div style={{display:"flex",width:"1200px",justifyContent:"space-around",marginTop:"100px"}}>
+        <Container className="category-cont">
             
             <div className="box">
                 <img src={c1} style={{width:"205px",height:"100px"}}/>
@@ -38,7 +38,7 @@ function CategoryElements() {
                 <img src={c2} style={{width:"205px",height:"100px"}}/>
                 <span style={{fontSize:"16px",fontWeight:"500"}}>Exotic</span>
             </div>
-        </div>
+        </Container>
     )
 }
 

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 import Home from './components/Home/Home'
 import Category from './components/Category/Category';
+import Product from './components/Products/Product';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home}/>
         <Route path="/category" component={Category}/>
+        <Route path="/product/:name" component={Product}/>
       </Switch>
     </Router>
   );

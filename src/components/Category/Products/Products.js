@@ -1,6 +1,7 @@
 import React from 'react'
 import './Products.css'
 import katla from '../../../images/katla.jpg';
+import {Link} from 'react-router-dom'
 
 function Products() {
     return (
@@ -19,8 +20,8 @@ function Products() {
                 
             </div>
             <div className="buttons">
-                <button className="btn remove">Remove Filter</button>
-                <button className="btn apply">Apply Filter</button>
+                <button className="btn remove" style={{border:'1px solid #0E79BD'}}>Remove Filter</button>
+                <button className="btn apply" style={{background:'#0E79BD',color:'white'}}>Apply Filter</button>
             </div>
             <hr className="line2"/>
             <div className="products">
@@ -29,8 +30,8 @@ function Products() {
                     <span className="prod-name">Catla</span>
                     <span className="disc-price">₹ 400.00</span>
                     <span className="orig-price">₹ 600.00</span>
-                    <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4",marginTop:"30px"}}/>
-                    <span className="add">Add to cart</span>
+                    <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
+                    <span className="add"><Link to="/product/Catla">Add to cart</Link></span>
                 </div>
             </div>
         </div>

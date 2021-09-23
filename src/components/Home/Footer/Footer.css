@@ -6,7 +6,7 @@
     align-items: center;
     padding: 60px 100px;
     background-color:#0E79BD ;
-    margin-top: 150px;
+    margin-top: 70px;
 }
 
 .logo{
@@ -42,4 +42,21 @@
 
 .l1{
     width: 151px;
+}
+
+
+@media screen and (max-width:760px) {
+    .lists{
+        width:50vw;
+    }
+    .l1{
+        width: 20vw;
+    }
+    .l2{
+        width: 30vw;
+        margin-left: 20px;
+    }
+    .logo{
+        width: 20vw;
+    }
 }

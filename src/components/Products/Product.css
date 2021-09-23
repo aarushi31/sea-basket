@@ -1,0 +1,96 @@
+.prod-container{
+    width: 100vw;
+}
+.prod-img{
+    width: 100%;
+    height: 550px;
+}
+.details{
+    width: 100vw;
+    padding:30px 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.name-price{
+    display: flex;
+    flex-direction: column;
+    line-height: 40px;
+}
+
+.buy{
+    display: flex;
+    flex-direction: column;
+    line-height: 70px;
+}
+.stock{
+    width: 150px;
+    height: 50px;
+    border: 1px solid green;
+    border-radius: 25px;
+    color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 50px;
+}
+.addProd{
+    display: flex;
+    width: 200px;
+    height: 50px;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #0E79BD;
+    color: #0E79BD;
+    margin-top: 20px;
+}
+
+.hrLine{
+    width: 1045px;
+    margin-left: 120px;
+    background-color: black;
+    border: 1px solid black;
+    opacity: 0.2;
+}
+
+.option-container{
+    width: 100vw;
+    padding: 30px 120px;
+}
+
+.options{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.opt{
+    border: 1px solid grey;
+    width: 200px;
+    border-radius: 12px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.activeOpt{
+    border: 2px solid #0E79BD;
+    color: #0E79BD;
+}
+.description,.specification,.similar{
+    width: 100vw;
+    padding:30px 120px;
+    text-align: left;
+
+}
+
+.similar-products{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px;
+    flex-wrap: wrap;
+}
