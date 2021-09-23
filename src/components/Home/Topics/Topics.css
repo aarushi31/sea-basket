@@ -19,6 +19,8 @@
     background-repeat: no-repeat;
     height: 351px;
     width: 1200px;
+    position: relative;
+    right: 100px;
 }
 .topic-title{
     font-weight: 600;
