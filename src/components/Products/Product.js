@@ -29,31 +29,51 @@ function Product() {
     return (
         <div>
         <div className="prod-container">
-            <img src={katla} alt="Product image" className="prod-img"/>
+            
             <div className="details">
-                <div className="name-price">
-                    <span style={{fontSize:"24px",fontWeight:"600"}}>{name}</span>
-                    <span style={{fontSize:"20px",color:'#0E79BD'}}>₹ {price+extra}.00</span>
-                    <span style={{fontSize:'18px',color:'gray',textDecoration:'line-through'}}>₹ 600.00</span>
-                </div>
-                <div className="buy">
+            <img src={katla} alt="Product image" className="prod-img"/>
+                <div className="small-container">
+                <div className="prod-deets">
+                    <div className="name-price">
+                        <span style={{fontSize:"24px",fontWeight:"600"}}>{name}</span>
+                        <span style={{fontSize:"20px",color:'#0E79BD'}}>₹ {price+extra}.00</span>
+                        <span style={{fontSize:'18px',color:'gray',textDecoration:'line-through'}}>₹ 600.00</span>
+
+                    </div>
                     <span className="stock">In Stock</span>
+                </div>
+                <hr style={{width:'100%',background:'black',marginLeft:'20px'}}/>
+               
+                
+                <div className="buy">
+                    {/* <span className="stock">In Stock</span>
                     <div className="addProd">
                         <span onClick={()=>setamt(amt+1)} style={{cursor:"pointer"}}>+</span>
                         <span>{amt}</span>
                         <span onClick={decrease} style={{cursor:"pointer"}}>-</span>
-                    </div>
-                </div>
-            </div>
-            <hr className="hrLine"/>
-            <div className="option-container">
-                <p style={{fontWeight:'600'}}>Select option</p>
+                    </div> */}
+                    <p style={{fontWeight:'600'}}>Select option</p>
                 <div className="options">
                     <span className={`opt ${extra===10 ? "activeOpt":""}`} onClick={()=>handlePrice(10)}>Small(+10.00)</span>
                     <span className={`opt ${extra===20 ? "activeOpt":""}`} onClick={()=>handlePrice(20)}>Medium(+20.00)</span>
                     <span className={`opt ${extra===30 ? "activeOpt":""}`} onClick={()=>handlePrice(30)}>Large(+30.00)</span>
                 </div>
+                {/* <hr style={{width:'40vw',background:'black',marginRight:'40px'}}/> */}
+                <div className="amt-container">
+                <span style={{fontWeight:'600',position:'relative',top:'40px'}}>Choose Quantity</span>
+                <div className="addProd">
+                    <span onClick={()=>setamt(amt+1)} style={{cursor:"pointer"}}>+</span>
+                    <span>{amt}</span>
+                    <span onClick={decrease} style={{cursor:"pointer"}}>-</span>
+                </div>
+                </div>
+                </div>
+                </div>
             </div>
+            {/* <hr className="hrLine"/>
+            <div className="option-container">
+                
+            </div> */}
             <hr className="hrLine"/>
             <div className="description">
                 <p style={{fontWeight:'600',lineHeight:'40px'}}>Description</p>
@@ -70,6 +90,10 @@ function Product() {
                 <p><b>Specification 6 :</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
             </div>
             <hr className="hrLine"/>
+            <div className="buy-buttons">
+                <button className="button add-to-cart">Add to cart</button>
+                <button className="button buyNow">Buy now</button>
+            </div>
             <div className="similar">
                 <p style={{fontWeight:'600',lineHeight:'40px'}}>View similar products</p>
                 <div className="similar-products">
