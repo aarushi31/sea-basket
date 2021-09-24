@@ -10,55 +10,23 @@ import axios from 'axios'
 function CategorySection() {
 
     const [categories,setCategory]=useState([]);
+    
+
     useEffect(()=>{
         axios.get('https://seabasket.citypetcare.in/api/getCategories/key/654784578114')
         .then(res=>{
-            console.log(res);
+            console.log(res.data.response[0]);
             setCategory(res.data.response)
+
+        
         })
         .catch(err=>{
             console.log(err)
         })
+
+        
     },[])
-
-    // const [subcate1,setSubCate1]=useState([]);
-    // useEffect(()=>{
-    //     const cate_id=categories[0].category_id;
-    //     axios.get(`https://seabasket.citypetcare.in/api/getchildCategories/cate_id/${cate_id}/key/654784578114`)
-    //     .then(res=>{
-    //         console.log(res);
-    //         setSubCate1(res.data.response)
-    //         console.log(subcate1)
-    //     })
-    //     .catch(err=>{
-    //         console.log(err)
-    //     })
-    // },[])
-    // const [subcate2,setSubCate2]=useState([]);
-    // useEffect(()=>{
-    //     const cate_id=categories[0].category_id;
-    //     axios.get(`https://seabasket.citypetcare.in/api/getchildCategories/cate_id/${cate_id}/key/654784578114`)
-    //     .then(res=>{
-    //         console.log(res);
-    //         setSubCate2(res.data.response)
-    //     })
-    //     .catch(err=>{
-    //         console.log(err)
-    //     })
-    // },[])
-    // const [subcate3,setSubCate3]=useState([]);
-    // useEffect(()=>{
-    //     const cate_id=categories[0].category_id;
-    //     axios.get(`https://seabasket.citypetcare.in/api/getchildCategories/cate_id/${cate_id}/key/654784578114`)
-    //     .then(res=>{
-    //         console.log(res);
-    //         setSubCate3(res.data.response)
-    //     })
-    //     .catch(err=>{
-    //         console.log(err)
-    //     })
-    // },[])
-
+    
 
     return (
         <div style={{textAlign:"center",width:"100vw",marginTop:"100px",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
@@ -86,27 +54,39 @@ function CategorySection() {
                 )
             })}
         </div>
-        <h3 className="category-heading2" style={{marginTop:"100px"}}>FISH</h3>
-            <div style={{display:"flex",width:"1200px",justifyContent:"flex-start",marginTop:"60px",padding:"0 20px"}}>
+        
             
-            <div className="box2">
+            
+            {/* <div className="box2">
                 <img src={sub1} style={{width:"310px",height:"188px",paddingBottom:"35px"}}/>
                 <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>SEA FISH</span>
             </div>
             <div className="box2" style={{marginLeft:"122px"}}>
                 <img src={sub2} style={{width:"310px",height:"188px",paddingBottom:"35px"}}/>
                 <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>RIVER FISH</span>
-            </div>
-            {/* {subcate1.map((item,index)=>{
+            </div> */}
+            {categories.map((item,index)=>{
                 return(
-                    <div className="box2" style={{marginLeft:"122px"}} key={index}>
-                        <img src={item.image} style={{width:"310px",height:"188px",paddingBottom:"35px"}}/>
-                        <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>{item.name}</span>
-                    </div> 
-                )
-            })} */}
+                    <>
+                    {item.children && <h3 className="category-heading2" style={{marginTop:"100px"}}>{item.name}</h3>}
+                    <div style={{display:"flex",width:"1200px",justifyContent:"flex-start",marginTop:"60px",flexWrap:'wrap'}}>
+                    {item.children.map((c,i)=>{
 
-        </div>
+                        return(
+                            <div className="box2" style={{marginLeft:"50px"}} key={i}>
+                            <img src={c.image} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
+                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>{c.name}</span>
+                        </div> 
+                        )
+                    })
+                    
+                    }
+                    </div>
+                    </>
+                )
+            })}
+
+        
         <h3 className="category-heading3" style={{marginTop:"100px"}}>PRODUCTS</h3>
         <hr className="line"/>
         </div>
