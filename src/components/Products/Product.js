@@ -1,15 +1,36 @@
-import React, { useState } from 'react'
-import { useParams } from 'react-router'
+import React, { useEffect, useState } from 'react'
+import { Redirect, useParams } from 'react-router'
 import katla from '../../images/katla.jpg'
 import './Product.css'
 import {Link} from 'react-router-dom'
 import Footer from '../Home/Footer/Footer'
-
+import axios from 'axios'
 
 function Product() {
+    
     const [amt, setamt]=useState(1);
 
-    const {name}=useParams();
+    const [deets,setDeets]=useState({});
+    const [related,setRelated]=useState([]);
+    const {product_id}=useParams();
+    console.log(product_id)
+
+
+    useEffect(()=>{
+
+        axios.get(`https://seabasket.citypetcare.in/api/getProduct/p_id/${product_id}/key/654784578114`)
+        .then(res=>{
+            console.log(res.data.response.product);
+            setDeets(res.data.response.product)
+            console.log(res.data.response.related);
+            setRelated(res.data.response.related)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    },[])
+
+
     const decrease=()=>{
         let tempamt=amt-1;
         if(tempamt<=0){
@@ -21,7 +42,10 @@ function Product() {
     }
 
     const [extra,setExtra]=useState(20);
-    const [price,setPrice]=useState(400);
+    const Pprice=deets.special?parseFloat(deets.special):parseFloat(deets.price);
+    const [price,setPrice]=useState();
+
+    console.log(price)
     const handlePrice=(p)=>{
         setExtra(p);
     }
@@ -31,13 +55,13 @@ function Product() {
         <div className="prod-container">
             
             <div className="details">
-            <img src={katla} alt="Product image" className="prod-img"/>
+            <img src={deets.image} alt="Product image" className="prod-img"/>
                 <div className="small-container">
                 <div className="prod-deets">
                     <div className="name-price">
-                        <span style={{fontSize:"24px",fontWeight:"600"}}>{name}</span>
-                        <span style={{fontSize:"20px",color:'#0E79BD'}}>₹ {price+extra}.00</span>
-                        <span style={{fontSize:'18px',color:'gray',textDecoration:'line-through'}}>₹ 600.00</span>
+                        <span style={{fontSize:"24px",fontWeight:"600"}}>{deets.name}</span>
+                        <span style={{fontSize:"20px",color:'#0E79BD'}}>₹ {Pprice+extra}</span>
+                        {deets.special && <span style={{fontSize:'18px',color:'gray',textDecoration:'line-through'}}>₹ {parseFloat(deets.price)}</span>}
 
                     </div>
                     <span className="stock">In Stock</span>
@@ -97,38 +121,22 @@ function Product() {
             <div className="similar">
                 <p style={{fontWeight:'600',lineHeight:'40px'}}>View similar products</p>
                 <div className="similar-products">
-                <div className="product">
-                    <img src={katla} alt="proctuct-img" className="product-img"/>
-                    <span className="prod-name">Catla</span>
-                    <span className="disc-price">₹ 400.00</span>
-                    <span className="orig-price">₹ 600.00</span>
-                    <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
-                    <span className="add"><Link to="/product/Catla">Add to cart</Link></span>
-                </div>
-                <div className="product">
-                    <img src={katla} alt="proctuct-img" className="product-img"/>
-                    <span className="prod-name">Catla</span>
-                    <span className="disc-price">₹ 400.00</span>
-                    <span className="orig-price">₹ 600.00</span>
-                    <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
-                    <span className="add"><Link to="/product/Catla">Add to cart</Link></span>
-                </div>
-                <div className="product">
-                    <img src={katla} alt="proctuct-img" className="product-img"/>
-                    <span className="prod-name">Catla</span>
-                    <span className="disc-price">₹ 400.00</span>
-                    <span className="orig-price">₹ 600.00</span>
-                    <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
-                    <span className="add"><Link to="/product/Catla">Add to cart</Link></span>
-                </div>
-                <div className="product">
-                    <img src={katla} alt="proctuct-img" className="product-img"/>
-                    <span className="prod-name">Catla</span>
-                    <span className="disc-price">₹ 400.00</span>
-                    <span className="orig-price">₹ 600.00</span>
-                    <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
-                    <span className="add"><Link to="/product/Catla">Add to cart</Link></span>
-                </div>
+                    {related.map((item,index)=>{
+                        return(
+                                <div className="product">
+                                    <img src={item.thumb} alt="proctuct-img" className="product-img"/>
+                                    <span className="prod-name">{item.name}</span>
+                                    <span className="disc-price">₹ {item.special?parseFloat(item.special):parseFloat(item.price)}</span>
+                                    {item.special && <span className="orig-price">₹ {parseFloat(item.price)}</span>}
+                                    <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
+                                    <span className="add"><a onClick={() => {window.location.href=`/product/${item.product_id}`}}>Add to cart</a></span>
+                                </div>
+                        )
+                    })}
+                
+                
+                
+                
                 </div>
             </div>
         </div>

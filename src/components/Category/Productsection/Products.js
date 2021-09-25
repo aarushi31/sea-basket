@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Products.css'
 import katla from '../../../images/katla.jpg';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import axios from 'axios'
 
 function Products() {
+
+    const [products,setProducts]=useState([]);
+
+    useEffect(()=>{
+        axios.get('https://seabasket.citypetcare.in/api/products/key/654784578114')
+        .then(res=>{
+            console.log(res.data.response);
+            setProducts(res.data.response);
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    },[])
+
+
     return (
         <div className="product-container">
             <div className="filters">
@@ -24,15 +40,21 @@ function Products() {
                 <button className="btn apply" style={{background:'#0E79BD',color:'white'}}>Apply Filter</button>
             </div>
             <hr className="line2"/>
+            {/* <h3 className="product-headings">Our Bestsellers</h3> */}
             <div className="products">
-                <div className="product">
-                    <img src={katla} alt="proctuct-img" className="product-img"/>
-                    <span className="prod-name">Catla</span>
-                    <span className="disc-price">₹ 400.00</span>
-                    <span className="orig-price">₹ 600.00</span>
-                    <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
-                    <span className="add"><Link to="/product/Catla">Add to cart</Link></span>
-                </div>
+                {products.map((item,index)=>{
+                    return(
+                        <div className="product">
+                            <img src={item.thumb} alt="proctuct-img" className="product-img"/>
+                            <span className="prod-name">{item.name}</span>
+                            <span className="disc-price">₹ {item.special?parseFloat(item.special):parseFloat(item.price)}</span>
+                            {item.special && <span className="orig-price">₹ {parseFloat(item.price)}</span>}
+                            <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
+                            <span className="add"><Link to={{pathname: `/product/${item.product_id}`}}>Add to cart</Link></span>
+                        </div>
+                    )
+                })}
+                
             </div>
         </div>
     )
