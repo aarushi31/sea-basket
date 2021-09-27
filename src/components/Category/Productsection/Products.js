@@ -3,6 +3,8 @@ import './Products.css'
 import katla from '../../../images/katla.jpg';
 import {Link} from 'react-router-dom';
 import axios from 'axios'
+import heart_outline from '../../../images/icons/heart_outline.svg'
+import heart_filled from '../../../images/icons/heart_filled.svg'
 
 function Products() {
 
@@ -18,6 +20,26 @@ function Products() {
             console.log(err)
         })
     },[])
+    const [added, setAdded] = useState(false);
+
+    const addWishlist=(e)=>{
+        e.preventDefault();
+        //window.alert('Added to wishlist');
+        //setImgSrc(heart_filled)
+        
+        //setAdded(!added);    
+        
+        if(e.target.dataset.wishlist!==undefined)
+        {
+            e.target.src=heart_filled;
+            e.target.removeAttribute('data-wishlist');
+        }
+        else{
+
+            e.target.src=heart_outline;
+            e.target.setAttribute('data-wishlist','true');
+        }
+    }
 
 
     return (
@@ -50,7 +72,10 @@ function Products() {
                             <span className="disc-price">₹ {item.special?parseFloat(item.special):parseFloat(item.price)}</span>
                             {item.special && <span className="orig-price">₹ {parseFloat(item.price)}</span>}
                             <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
+                            <div style={{display:'flex',width:'100%',justifyContent:'space-evenly'}}>
                             <span className="add"><Link to={{pathname: `/product/${item.product_id}`}}>Add to cart</Link></span>
+                            <span style={{cursor:'pointer'}}><img src={heart_outline} alt="Wishlist" onClick={(e)=>addWishlist(e)} data-wishlist /></span>
+                            </div>
                         </div>
                     )
                 })}

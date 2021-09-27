@@ -1,10 +1,51 @@
-import React from 'react'
+import React,{useReducer} from 'react'
 import {Nav, NavLink, Bars,NavMenu, NavBtn, NavBtnLink} from './NavElements'
 import logo from '../../images/logo1.png'
 import * as Rbs from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link,useHistory } from 'react-router-dom'
+
+import {useDispatch, useSelector} from 'react-redux';
+import {selectUser} from '../../features/userSlice'
+import {logout} from '../../features/userSlice'
 
 function Navbar() {
+
+    //const [state, dispatch] = useReducer(reducer, initialState);
+    //const login=state.loggedin;
+    //console.log(state.loggedin)
+    const user=useSelector(selectUser)
+    const history=useHistory();
+    const dispatch=useDispatch();
+
+    const handleLogout=(e)=>{
+      e.preventDefault();
+      
+      dispatch(logout())
+      //dispatch({ type: 'logout' });
+
+      history.push('/login');
+    }
+    const showLogin=()=>{
+      if(!user){
+        return(
+          <Rbs.Nav.Link href="/login" style={{width:'100px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center'}}>
+        Login
+      </Rbs.Nav.Link>
+        )
+      }
+      else if(user){
+        return(
+          <div style={{display:'flex',width:'20vw',justifyContent:'space-between'}}>
+          <span style={{width:'100px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer'}}>
+        <a href="/editprofile" style={{color:'white',textDecoration:'none'}}>Edit profile</a>
+      </span>
+      <span style={{width:'100px',background:'red',color:'white',display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer'}} onClick={(e)=>handleLogout(e)}>
+        Logout
+      </span>
+      </div>
+        )
+      }
+    }
     return (
         // <>
         //     <Nav>
@@ -49,9 +90,9 @@ function Navbar() {
       <Rbs.Nav.Link href="/category" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>Category</Rbs.Nav.Link>
       <Rbs.Nav.Link href="#faq" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>FAQ</Rbs.Nav.Link>
       <Rbs.Nav.Link href="/cart" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>My Cart</Rbs.Nav.Link>
-      <Rbs.Nav.Link href="/login" style={{width:'100px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center'}}>
-        Login
-      </Rbs.Nav.Link>
+      <Rbs.Nav.Link href="/wishlist" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>Wishlist</Rbs.Nav.Link>
+      {showLogin()}
+      
     </Rbs.Nav>
   </Rbs.Navbar.Collapse>
   </Rbs.Container>

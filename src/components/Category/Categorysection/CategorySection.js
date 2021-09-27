@@ -31,7 +31,7 @@ function CategorySection() {
     return (
         <div style={{textAlign:"center",width:"100vw",marginTop:"100px",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
             <h3 className="category-heading">CATEGORIES</h3>
-            <div style={{display:"flex",width:"1200px",justifyContent:"space-around",marginTop:"60px"}}>
+            <div style={{display:"flex",width:"1200px",justifyContent:"space-around",marginTop:"60px",flexWrap:'wrap'}}>
             
             {/* <div className="box">
                 <img src={c1} style={{width:"150px",height:"80px"}}/>

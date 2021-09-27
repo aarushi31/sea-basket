@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useReducer } from 'react'
 import { Redirect, useParams } from 'react-router'
 import katla from '../../images/katla.jpg'
 import './Product.css'
 import {Link} from 'react-router-dom'
 import Footer from '../Home/Footer/Footer'
-import axios from 'axios'
+import axios from 'axios';
+import {useDispatch, useSelector} from 'react-redux';
+import {selectUser} from '../../features/userSlice'
+import heart_outline from '../../images/icons/heart_outline.svg'
+import heart_filled from '../../images/icons/heart_filled.svg'
+
 
 function Product() {
-    
+    const user=useSelector(selectUser)
     const [amt, setamt]=useState(1);
 
     const [deets,setDeets]=useState({});
@@ -50,6 +55,56 @@ function Product() {
         setExtra(p);
     }
 
+    // const postdata={
+    //     customer_id:parseInt(user.customer_id),
+    //     product_id:parseInt(product_id),
+    //     quantity:amt
+
+    // }
+    // let config={
+    //     headers:{
+    //         'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'
+    //     }
+    // }
+
+    // const addToCart=()=>{
+    //     if(amt==0){
+    //         window.alert('Please select the no. of product');
+    //     }
+    //     else{
+    //         axios.post('https://seabasket.citypetcare.in/api/addcart/key/654784578114',postdata,config)
+    //         .then(res=>{
+    //             console.log(postdata.customer_id)
+    //             console.log(postdata.product_id)
+    //             console.log(res);
+                
+    //         })
+    //         .catch(err=>{
+    //             console.log(err)
+    //         })
+
+    //     }
+    // }
+
+    const addWishlist=(e)=>{
+        e.preventDefault();
+        //window.alert('Added to wishlist');
+        //setImgSrc(heart_filled)
+        
+        //setAdded(!added);    
+        
+        if(e.target.dataset.wishlist!==undefined)
+        {
+            e.target.src=heart_filled;
+            e.target.removeAttribute('data-wishlist');
+        }
+        else{
+
+            e.target.src=heart_outline;
+            e.target.setAttribute('data-wishlist','true');
+        }
+    }
+
     return (
         <div>
         <div className="prod-container">
@@ -59,11 +114,12 @@ function Product() {
                 <div className="small-container">
                 <div className="prod-deets">
                     <div className="name-price">
-                        <span style={{fontSize:"24px",fontWeight:"600"}}>{deets.name}</span>
+                        <span style={{fontSize:"24px",fontWeight:"600"}}>{deets.name} <span style={{cursor:'pointer'}}><img src={heart_outline} alt="Wishlist" onClick={(e)=>addWishlist(e)} data-wishlist /></span></span>
                         <span style={{fontSize:"20px",color:'#0E79BD'}}>₹ {Pprice+extra}</span>
                         {deets.special && <span style={{fontSize:'18px',color:'gray',textDecoration:'line-through'}}>₹ {parseFloat(deets.price)}</span>}
 
                     </div>
+                    
                     <span className="stock">In Stock</span>
                 </div>
                 <hr style={{width:'100%',background:'black',marginLeft:'20px'}}/>
@@ -129,7 +185,10 @@ function Product() {
                                     <span className="disc-price">₹ {item.special?parseFloat(item.special):parseFloat(item.price)}</span>
                                     {item.special && <span className="orig-price">₹ {parseFloat(item.price)}</span>}
                                     <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
+                                    <div style={{display:'flex',width:'100%',justifyContent:'space-evenly'}}>
                                     <span className="add"><a onClick={() => {window.location.href=`/product/${item.product_id}`}}>Add to cart</a></span>
+                                    <span style={{cursor:'pointer'}}><img src={heart_outline} alt="Wishlist" onClick={(e)=>addWishlist(e)} data-wishlist /></span>
+                                    </div>
                                 </div>
                         )
                     })}
