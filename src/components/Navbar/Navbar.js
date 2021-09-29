@@ -7,6 +7,7 @@ import { Link,useHistory } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux';
 import {selectUser} from '../../features/userSlice'
 import {logout} from '../../features/userSlice'
+import './Navbar.css'
 
 function Navbar() {
 
@@ -38,7 +39,7 @@ function Navbar() {
       }
       else if(user){
         return(
-          <div style={{display:'flex',width:'20vw',justifyContent:'space-between'}}>
+          <div style={{display:'flex',width:'22vw',justifyContent:'space-between'}}>
           <span style={{width:'120px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer',borderRadius:'25px'}}>
         <a href="/editprofile" style={{color:'white',textDecoration:'none'}}>Edit profile</a>
       </span>
