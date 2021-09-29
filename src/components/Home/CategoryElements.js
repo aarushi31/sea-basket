@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './Categories.css'
-import {db,auth} from '../../firebase'
 import c1 from '../../images/c1.png';
 import c2 from '../../images/c2.png';
 import c0 from '../../images/c0.png';

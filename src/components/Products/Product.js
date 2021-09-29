@@ -105,7 +105,7 @@ function Product() {
         }
     }
 
-    return (
+    return ( 
         <div>
         <div className="prod-container">
             

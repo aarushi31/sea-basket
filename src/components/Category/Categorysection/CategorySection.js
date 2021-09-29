@@ -29,9 +29,9 @@ function CategorySection() {
     
 
     return (
-        <div style={{textAlign:"center",width:"100vw",marginTop:"100px",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+        <div className="cate-container">
             <h3 className="category-heading">CATEGORIES</h3>
-            <div style={{display:"flex",width:"1200px",justifyContent:"space-around",marginTop:"60px",flexWrap:'wrap'}}>
+            <div className="cat-subcontainer">
             
             {/* <div className="box">
                 <img src={c1} style={{width:"150px",height:"80px"}}/>
@@ -69,7 +69,7 @@ function CategorySection() {
                 return(
                     <>
                     {item.children && <h3 className="category-heading2" style={{marginTop:"100px"}}>{item.name}</h3>}
-                    <div style={{display:"flex",width:"1200px",justifyContent:"flex-start",marginTop:"60px",flexWrap:'wrap'}}>
+                    <div className="cat-subcontainer">
                     {item.children.map((c,i)=>{
 
                         return(

@@ -21,6 +21,9 @@ function Navbar() {
       e.preventDefault();
       
       dispatch(logout())
+      localStorage.removeItem('email');
+      localStorage.removeItem('customer_id');
+      localStorage.removeItem('loggedIn');
       //dispatch({ type: 'logout' });
 
       history.push('/login');

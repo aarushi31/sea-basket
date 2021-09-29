@@ -38,6 +38,9 @@ function Login() {
                     loggedIn:true,
                     
                 }))
+                localStorage.setItem('customer_id',res.data.userdata.customer_id);
+                localStorage.setItem('loggedIn',true);
+                localStorage.setItem('email',email);
                 //window.alert("You have loggedin successfully");
                 history.push('/category');
             }

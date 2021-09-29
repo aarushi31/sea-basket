@@ -92,7 +92,7 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-}
+} 
 .product-img{
     width: 165px;
     height: 110px;
@@ -137,4 +137,36 @@
     font-size: 20px;
     text-transform: uppercase;
 
+}
+
+@media screen and (max-width:760px) {
+    .filters{
+        width: 90vw;
+        flex-wrap: wrap;
+
+    }
+    .input-box{
+        margin-left: 25vw;
+        height: 30px;
+        padding: 10px 20px;
+        margin-top: 10px;
+    }
+    .buttons{
+        width: 90vw;
+    }
+    .btn{
+        width: 40vw;
+    }
+    .products{
+        width: 100vw;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .product{
+        width: 60vw;
+        
+    }
+    .product-img{
+        width: 100%;
+    }
 }

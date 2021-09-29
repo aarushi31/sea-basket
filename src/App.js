@@ -8,14 +8,27 @@ import Product from './components/Products/Product';
 import Cart from './components/Cart/Cart';
 import Register from './components/Login/Register';
 import Login from './components/Login/Login';
-import React from 'react'
+import React, { useEffect } from 'react'
 import Profile from './components/Profile/Profile'
-
+import { useDispatch } from 'react-redux';
+import {login} from './features/userSlice'
 
 
 //export const UserContext=createContext();
 
 function App() {
+  const dispatch=useDispatch();
+  
+
+  useEffect(()=>{
+    dispatch(login({
+      email:localStorage.getItem('email'),
+      customer_id:localStorage.getItem('customer_id'),
+      loggedIn:localStorage.getItem('loggedIn')
+    }))
+  },[])
+
+
   return (
     
     <Router>

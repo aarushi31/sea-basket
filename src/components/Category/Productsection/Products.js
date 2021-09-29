@@ -41,7 +41,7 @@ function Products() {
         }
     }
 
-
+ 
     return (
         <div className="product-container">
             <div className="filters">
@@ -67,7 +67,7 @@ function Products() {
                 {products.map((item,index)=>{
                     return(
                         <div className="product">
-                            <img src={item.thumb} alt="proctuct-img" className="product-img"/>
+                            <img src={item.thumb} alt="product-img" className="product-img"/>
                             <span className="prod-name">{item.name}</span>
                             <span className="disc-price">₹ {item.special?parseFloat(item.special):parseFloat(item.price)}</span>
                             {item.special && <span className="orig-price">₹ {parseFloat(item.price)}</span>}

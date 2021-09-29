@@ -146,4 +146,76 @@
     .details,.prod-deets{
         flex-direction: column;
     }
+    .details{
+        width: 90vw;
+        padding: 10px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .prod-img{
+        width: 95vw;
+    }
+    .prod-deets{
+        width: 100vw;
+        padding:20px;
+        
+    }
+    .small-container{
+        width: 100vw;
+    }
+    .name-price{
+        width: 100vw;
+        flex-direction: column;
+        flex-wrap: wrap;
+        line-height: 40px;
+        justify-content: space-evenly;
+    }
+    .stock{
+        position: relative;
+        left: 0;
+    }
+    .buy{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .options{
+        width: 100%;
+        margin-top: 20px;
+    }
+    .opt{
+        width: 80%;
+    }
+    .amt-container{
+        width: 90vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .hrLine{
+        width: 100vw;
+        margin-left: 0;
+    }
+    .description{
+        width: 90vw;
+        padding: 20px;
+    }
+    .specification{
+        width: 90vw;
+        padding: 20px;
+    }
+    .buy-buttons{
+        padding: 20px;
+    }
+    .button{
+        width: 40vw;
+    }
+    .similar{
+        padding: 20px;
+        justify-content: center;
+    }
+    .similar-products{
+        justify-content: center;
+    }
 }
