@@ -1,6 +1,6 @@
 {
   "name": "task",
-  "proxy": "https://seabasket.citypetcare.in",
+  "proxy": "https://seabasket.citypetcare.in/api",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
