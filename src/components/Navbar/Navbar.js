@@ -41,7 +41,7 @@ function Navbar() {
         return(
           <div style={{display:'flex',width:'22vw',justifyContent:'space-between'}}>
           <span style={{width:'120px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer',borderRadius:'25px'}}>
-        <a href="/editprofile" style={{color:'white',textDecoration:'none'}}>Edit profile</a>
+        <a href="/editprofile" style={{color:'white',textDecoration:'none'}}>My profile</a>
       </span>
       <span style={{width:'120px',background:'red',color:'white',display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer',borderRadius:'25px'}} onClick={(e)=>handleLogout(e)}>
         Logout

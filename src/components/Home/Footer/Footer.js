@@ -1,6 +1,6 @@
 import React from 'react'
 import './Footer.css'
-import logo from '../../../images/logo1.png'
+import logo from '../../../images/logoWhite.png'
 import Copyright from './Copyright'
 
 
