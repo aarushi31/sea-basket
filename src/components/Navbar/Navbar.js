@@ -31,7 +31,7 @@ function Navbar() {
     const showLogin=()=>{
       if(!user){
         return(
-          <Rbs.Nav.Link href="/login" style={{width:'100px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center'}}>
+          <Rbs.Nav.Link href="/login" style={{width:'100px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'25px'}}>
         Login
       </Rbs.Nav.Link>
         )
@@ -39,10 +39,10 @@ function Navbar() {
       else if(user){
         return(
           <div style={{display:'flex',width:'20vw',justifyContent:'space-between'}}>
-          <span style={{width:'100px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer'}}>
+          <span style={{width:'120px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer',borderRadius:'25px'}}>
         <a href="/editprofile" style={{color:'white',textDecoration:'none'}}>Edit profile</a>
       </span>
-      <span style={{width:'100px',background:'red',color:'white',display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer'}} onClick={(e)=>handleLogout(e)}>
+      <span style={{width:'120px',background:'red',color:'white',display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer',borderRadius:'25px'}} onClick={(e)=>handleLogout(e)}>
         Logout
       </span>
       </div>

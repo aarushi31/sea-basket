@@ -1,21 +1,25 @@
 .heading{
     font-size: 36px;
-    font-weight: 500;
+    font-weight:bolder;
+    color: #0E79BD;
+
 }
 .subheading{
     font-size: 22px;
     font-weight: 400;
     margin-top: 2rem;
+    
 }
 .subHeading2{
     margin-top: 3rem;
     /* margin-left: 120px; */
     font-size: 36px;
-    font-weight: 500;
+    font-weight: 800;
     /* text-align: left; */
     position: relative;
     right:480px;
     top:60px;
+    color: #0E79BD;
 }
 .category-cont{
     display:flex;

@@ -99,7 +99,7 @@ function Faq() {
         // </FaqSection>
         // </IconContext.Provider>
         <Container className="faq-box">
-            <center><h2 style={{fontSize:"30px",fontWeight:"500",marginTop:"150px"}}>FAQs</h2></center>
+            <center><h2 style={{fontSize:"30px",fontWeight:"600",marginTop:"150px",color:'#0E79BD'}}>FAQs</h2></center>
         <Accordion defaultActiveKey="0" style={{marginTop:'60px'}}>
   <Accordion.Item eventKey="0">
     <Accordion.Header>Accordion Item #1</Accordion.Header>
