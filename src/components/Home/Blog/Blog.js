@@ -55,7 +55,7 @@ function Blog() {
 We shall supply high quality seafood from sustainable fisheries/fishermen. It is important to secure
 sustainable seafood stock for the generations to come. We work only with suppliers that have the
 same view on this important factor as our self. Being able to harvest from sustainable resources we
-believe these products deserve to be treated with high quality and respect.<br/>
+believe these products deserve to be treated with high quality and respect.<br/><br/>
 <b>Quality &amp; Safety</b><br/>
 To deliver the best quality of products we adhere to every legal food safety requirement throughout all
 our business processes, and use a fully documented Hazard Analysis &amp; Critical Control Points
