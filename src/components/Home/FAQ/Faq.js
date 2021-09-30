@@ -117,7 +117,7 @@ it is hailed as a perfect base when seasoning/cooking fish. Certain fish are goo
 frying, others are best grilled. Do some research on the fish you have.
     </Accordion.Body>
   </Accordion.Item>
-  <Accordion.Item eventKey="1">
+  <Accordion.Item eventKey="2">
     <Accordion.Header>Does taking the skin off make a fish a fillet?</Accordion.Header>
     <Accordion.Body>
     <b>Community Answer</b><br/><br/>
@@ -125,7 +125,7 @@ frying, others are best grilled. Do some research on the fish you have.
 have skin.
     </Accordion.Body>
   </Accordion.Item>
-  <Accordion.Item eventKey="1">
+  <Accordion.Item eventKey="3">
     <Accordion.Header>What do you mean by &quot;scale the fish&quot;?</Accordion.Header>
     <Accordion.Body>
     <b>Community Answer</b><br/><br/>
@@ -133,21 +133,21 @@ have skin.
     fish.
     </Accordion.Body>
   </Accordion.Item>
-  <Accordion.Item eventKey="1">
+  <Accordion.Item eventKey="4">
     <Accordion.Header>How do I fillet a catfish?</Accordion.Header>
     <Accordion.Body>
     <b>Community Answer</b><br/><br/>
     You can fillet a catfish the same way you would fillet any other fish.
     </Accordion.Body>
   </Accordion.Item>
-  <Accordion.Item eventKey="1">
+  <Accordion.Item eventKey="5">
     <Accordion.Header>Will this same fillet method work for common carp?</Accordion.Header>
     <Accordion.Body>
     <b>Community Answer</b><br/><br/>
     Yes. Just be sure to scale and gut it first so you&#39;re not poisoned by the organs.
     </Accordion.Body>
   </Accordion.Item>
-  <Accordion.Item eventKey="1">
+  <Accordion.Item eventKey="6">
     <Accordion.Header>Do I gut the fish first?</Accordion.Header>
     <Accordion.Body>
     <b>Community Answer</b><br/><br/>
@@ -155,7 +155,7 @@ have skin.
 then discard the remainder of the fish.
     </Accordion.Body>
   </Accordion.Item>
-  <Accordion.Item eventKey="1">
+  <Accordion.Item eventKey="7">
     <Accordion.Header>Should I start cutting at the head and pull the knife down to the tail or the other
 way around?</Accordion.Header>
     <Accordion.Body>
