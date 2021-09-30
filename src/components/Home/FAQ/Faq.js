@@ -102,27 +102,66 @@ function Faq() {
             <center><h2 style={{fontSize:"30px",fontWeight:"600",marginTop:"150px",color:'#0E79BD'}}>FAQs</h2></center>
         <Accordion defaultActiveKey="0" style={{marginTop:'60px'}}>
   <Accordion.Item eventKey="0">
-    <Accordion.Header>Accordion Item #1</Accordion.Header>
+    <Accordion.Header>Where do I cut a fish when I gut it?</Accordion.Header>
     <Accordion.Body>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
+    <b>Expert Answer</b><br/><br/>
+Start at the back of the fish by the tail and slice up along the belly up to the gills.
     </Accordion.Body>
   </Accordion.Item>
   <Accordion.Item eventKey="1">
-    <Accordion.Header>Accordion Item #2</Accordion.Header>
+    <Accordion.Header>Can I use butter when cooking a fillet fish?</Accordion.Header>
     <Accordion.Body>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
+    <b>Community Answer</b><br/><br/>
+Yes, but there are better options, as dairy and fish don’t mix well. Consider olive oil,
+it is hailed as a perfect base when seasoning/cooking fish. Certain fish are good for
+frying, others are best grilled. Do some research on the fish you have.
+    </Accordion.Body>
+  </Accordion.Item>
+  <Accordion.Item eventKey="1">
+    <Accordion.Header>Does taking the skin off make a fish a fillet?</Accordion.Header>
+    <Accordion.Body>
+    <b>Community Answer</b><br/><br/>
+    No. Fillet refers to the slab of meat on either side of the centre bone. A fish fillet can
+have skin.
+    </Accordion.Body>
+  </Accordion.Item>
+  <Accordion.Item eventKey="1">
+    <Accordion.Header>What do you mean by &quot;scale the fish&quot;?</Accordion.Header>
+    <Accordion.Body>
+    <b>Community Answer</b><br/><br/>
+    Scrape off the scales with a knife. Scales are the little flaky things on the skin of the
+    fish.
+    </Accordion.Body>
+  </Accordion.Item>
+  <Accordion.Item eventKey="1">
+    <Accordion.Header>How do I fillet a catfish?</Accordion.Header>
+    <Accordion.Body>
+    <b>Community Answer</b><br/><br/>
+    You can fillet a catfish the same way you would fillet any other fish.
+    </Accordion.Body>
+  </Accordion.Item>
+  <Accordion.Item eventKey="1">
+    <Accordion.Header>Will this same fillet method work for common carp?</Accordion.Header>
+    <Accordion.Body>
+    <b>Community Answer</b><br/><br/>
+    Yes. Just be sure to scale and gut it first so you&#39;re not poisoned by the organs.
+    </Accordion.Body>
+  </Accordion.Item>
+  <Accordion.Item eventKey="1">
+    <Accordion.Header>Do I gut the fish first?</Accordion.Header>
+    <Accordion.Body>
+    <b>Community Answer</b><br/><br/>
+    No. Cut the fillets off the fish on both sides with a fillet knife (thin blade, razor edge),
+then discard the remainder of the fish.
+    </Accordion.Body>
+  </Accordion.Item>
+  <Accordion.Item eventKey="1">
+    <Accordion.Header>Should I start cutting at the head and pull the knife down to the tail or the other
+way around?</Accordion.Header>
+    <Accordion.Body>
+    <b>Community Answer</b><br/><br/>
+    Start at the head, then make your way down to the tail. Try to keep the cut as even
+as possible.
     </Accordion.Body>
   </Accordion.Item>
 </Accordion>
