@@ -38,6 +38,7 @@
     height: 188px;
     flex-direction: column;
     border-radius: 25px;
+    cursor: pointer;
 }
 @media screen and (max-width:760px){
     .subHeading2{

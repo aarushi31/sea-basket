@@ -5,8 +5,10 @@ import c2 from '../../images/c2.png';
 import c0 from '../../images/c0.png';
 import {Container} from 'react-bootstrap'
 import axios from 'axios'
+import { useHistory } from 'react-router';
 
 function CategoryElements() {
+    const history=useHistory();
     const [categories,setCategory]=useState([]);
     useEffect(()=>{
         axios.get('https://seabasket.citypetcare.in/api/getCategories/key/654784578114')
@@ -18,6 +20,11 @@ function CategoryElements() {
             console.log(err)
         })
     },[])
+
+    const setCategoryID=(id)=>{
+        localStorage.setItem('category_id',id);
+        history.push('/category')
+    }
     return (
         <Container className="category-cont">
             
@@ -35,7 +42,7 @@ function CategoryElements() {
             </div> */}
             {categories.map((item,index)=>{
                 return(
-                    <div className="box" key={index}>
+                    <div className="box" key={index} onClick={()=>{setCategoryID(item.category_id)}}>
                         <img src={item.image} style={{width:"205px",height:"100px"}}/>
                         <span style={{fontSize:"16px",fontWeight:"500"}}>{item.name}</span>
                     </div>

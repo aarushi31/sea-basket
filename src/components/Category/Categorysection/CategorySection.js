@@ -31,20 +31,8 @@ function CategorySection() {
     return (
         <div className="cate-container">
             <h3 className="category-heading">CATEGORIES</h3>
-            <div className="cat-subcontainer">
+            {/* <div className="cat-subcontainer">
             
-            {/* <div className="box">
-                <img src={c1} style={{width:"150px",height:"80px"}}/>
-                <span style={{fontSize:"16px",fontWeight:"500"}}>FISH</span>
-            </div>
-            <div className="box">
-                <img src={c0} style={{width:"150px",height:"80px"}}/>
-                <span style={{fontSize:"16px",fontWeight:"500"}}>CRUSTACEANS</span>
-            </div>
-            <div className="box">
-                <img src={c2} style={{width:"150px",height:"80px"}}/>
-                <span style={{fontSize:"16px",fontWeight:"500"}}>EXOTIC</span>
-            </div> */}
             {categories.map((item,index)=>{
                 return(
                     <div className="box" key={index}>
@@ -53,7 +41,7 @@ function CategorySection() {
                     </div>
                 )
             })}
-        </div>
+        </div> */}
         
             
             
@@ -66,6 +54,7 @@ function CategorySection() {
                 <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>RIVER FISH</span>
             </div> */}
             {categories.map((item,index)=>{
+                if(item.category_id==localStorage.getItem('category_id')){
                 return(
                     <>
                     {item.children && <h3 className="category-heading2" style={{marginTop:"100px"}}>{item.name}</h3>}
@@ -84,6 +73,7 @@ function CategorySection() {
                     </div>
                     </>
                 )
+                }
             })}
 
         
