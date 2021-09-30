@@ -27,8 +27,19 @@ function CategorySection() {
 
         
     },[])
-    const setCategoryID=(id)=>{
+    const setCategoryID=(id,e)=>{
+        e.preventDefault();
         localStorage.setItem('category_id',id);
+        // if(e.target.dataset.activeCategory!==undefined)
+        // {
+        //     e.target.style.border='2px solid #black';
+        //     e.target.removeAttribute('data-wishlist');
+        // }
+        // else{
+
+        //     e.target.style;
+        //     e.target.setAttribute('data-wishlist','true');
+        // }
         history.push('/category')
     }
     
@@ -39,8 +50,9 @@ function CategorySection() {
             <div className="cat-subcontainer">
             
             {categories.map((item,index)=>{
+                const id=localStorage.getItem('category_id');
                 return(
-                    <div className="box" key={index} onClick={()=>{setCategoryID(item.category_id)}}>
+                    <div className={`box ${item.category_id==id?"blueBorder":""}`} key={index} onClick={(e)=>{setCategoryID(item.category_id,e)}}>
                         <img src={item.image} style={{width:"205px",height:"100px"}}/>
                         <span style={{fontSize:"16px",fontWeight:"500"}}>{item.name}</span>
                     </div>

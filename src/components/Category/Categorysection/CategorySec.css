@@ -8,6 +8,9 @@
     align-items:center;
 }
 
+.blueBorder{
+    border:2px solid #0E79BD;
+}
 
 .category-container{
     text-align:center;
