@@ -12,6 +12,7 @@ import React, { useEffect } from 'react'
 import Profile from './components/Profile/Profile'
 import { useDispatch } from 'react-redux';
 import {login} from './features/userSlice'
+import About from './components/About/About';
 
 
 //export const UserContext=createContext();
@@ -39,6 +40,7 @@ function App() {
         <Route path="/category" component={Category}/>
         <Route path="/product/:product_id" component={Product}/>
         <Route path="/cart" component={Cart}/>
+        <Route path="/aboutus" component={About}/>
         <Route path="/register" component={Register}/>
         <Route path="/login" component={Login}/>
         <Route path="/editprofile" component={Profile}/>

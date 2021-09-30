@@ -92,7 +92,7 @@ function Navbar() {
     </Rbs.Nav>
     <Rbs.Nav>
       <Rbs.Nav.Link href="/category" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>Category</Rbs.Nav.Link>
-      <Rbs.Nav.Link href="#faq" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>About us</Rbs.Nav.Link>
+      <Rbs.Nav.Link href="/aboutus" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>About us</Rbs.Nav.Link>
       <Rbs.Nav.Link href="/cart" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>My Cart</Rbs.Nav.Link>
       <Rbs.Nav.Link href="/wishlist" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>Wishlist</Rbs.Nav.Link>
       {showLogin()}
