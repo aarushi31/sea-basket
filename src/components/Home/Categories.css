@@ -52,7 +52,7 @@
     }
     .category-cont{
         flex-direction: column;
-        margin-top: 100px;
+        margin-top: 150px;
         justify-content: center;
         align-items: center;
         min-width: 100vw;

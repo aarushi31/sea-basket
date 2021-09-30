@@ -53,5 +53,7 @@
     }
     .blog{
         height: fit-content;
+        padding: 20px;
+        width: 100vw;
     }
 }
