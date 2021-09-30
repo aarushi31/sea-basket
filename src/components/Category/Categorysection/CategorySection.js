@@ -6,11 +6,12 @@ import c2 from '../../../images/c2.png';
 import sub1 from '../../../images/sub1.png'
 import sub2 from '../../../images/sub2.png'
 import axios from 'axios'
+import { useHistory } from 'react-router';
 
 function CategorySection() {
 
     const [categories,setCategory]=useState([]);
-    
+    const history=useHistory()
 
     useEffect(()=>{
         axios.get('https://seabasket.citypetcare.in/api/getCategories/key/654784578114')
@@ -26,22 +27,26 @@ function CategorySection() {
 
         
     },[])
+    const setCategoryID=(id)=>{
+        localStorage.setItem('category_id',id);
+        history.push('/category')
+    }
     
 
     return (
         <div className="cate-container">
             <h3 className="category-heading">CATEGORIES</h3>
-            {/* <div className="cat-subcontainer">
+            <div className="cat-subcontainer">
             
             {categories.map((item,index)=>{
                 return(
-                    <div className="box" key={index}>
+                    <div className="box" key={index} onClick={()=>{setCategoryID(item.category_id)}}>
                         <img src={item.image} style={{width:"205px",height:"100px"}}/>
                         <span style={{fontSize:"16px",fontWeight:"500"}}>{item.name}</span>
                     </div>
                 )
             })}
-        </div> */}
+        </div>
         
             
             
