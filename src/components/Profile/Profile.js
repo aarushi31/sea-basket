@@ -3,6 +3,16 @@ import {Form,InputGroup,Button,FormControl} from 'react-bootstrap'
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectUser} from '../../features/userSlice'
+import userIcon from '../../images/icons/user.png'
+import phoneIcon from '../../images/icons/phone.png'
+import hashIcon from '../../images/icons/hash.png'
+import faxIcon from '../../images/icons/fax.png'
+import locationIcon from '../../images/icons/location.png'
+import mailIcon from '../../images/icons/mail.png'
+import cross from '../../images/icons/cross.png'
+import './Profile.css'
+import Footer from '../Home/Footer/Footer';
+
 
 function Profile() {
     const user=useSelector(selectUser);
@@ -31,59 +41,78 @@ function Profile() {
 
 
     return (
-        <Form style={{padding:'30px 120px'}}>
-            <center>Update your profile</center>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>First name</Form.Label>
-                <Form.Control type="text" placeholder="John" value={firstname} onChange={(e)=>setFname(e.target.value)} required/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Last name</Form.Label>
-                <Form.Control type="text" placeholder="Doe" value={lastname} onChange={(e)=>setLname(e.target.value)}/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" value={email} onChange={(e)=>setemail(e.target.value)} required/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Mobile no.</Form.Label>
-                <Form.Control type="text" placeholder="Mobile no." value={telephone} onChange={(e)=>setTelephone(e.target.value)} required/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Fax</Form.Label>
-                <Form.Control type="text" placeholder="Fax" value={fax} onChange={(e)=>setFax(e.target.value)}/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Address Line 1</Form.Label>
-                <Form.Control type="text" placeholder="address" value={add1} onChange={(e)=>setAdd1(e.target.value)} required/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Address Line 2</Form.Label>
-                <Form.Control type="text" placeholder="address" value={add2} onChange={(e)=>setAdd2(e.target.value)}/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Label>City</Form.Label>
-                <Form.Control type="text" placeholder="city" value={city} onChange={(e)=>setCity(e.target.value)} required/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Postal code</Form.Label>
-                <Form.Control type="number" placeholder="postal code" value={postCode} onChange={(e)=>setPcode(e.target.value)} required/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Country Code</Form.Label>
-                <Form.Control type="number" placeholder="eg +91" value={countryCode} onChange={(e)=>setCcode(e.target.value)} required/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Zone Id</Form.Label>
-                <Form.Control type="number" placeholder="zone id" value={zoneId} onChange={(e)=>setZoneId(e.target.value)}/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Password</Form.Label>
-                <span><a href="/updatePassword">Update Password</a></span>
-            </Form.Group>
-
-            <Button variant="primary" onClick={(e)=>handleSubmit(e)}>Save</Button>{' '}
-        </Form>
+        <>
+        <div className="profile-container">
+            <center><h2 className="profile-heading">My profile</h2></center>
+            <div className="form">
+                <form>
+                    <div className="profile-row">
+                        <div className="input">
+                            <img src={userIcon} alt="user icon"/>
+                            <input placeholder="First name" type="text" onChange={(e)=>setFname(e.target.value)} value={firstname}/>
+                            <img src={cross} alt="clear" onClick={()=>setFname('')} className="cross"/>
+                        </div>
+                        <div className="input">
+                            <img src={userIcon} alt="user icon"/>
+                            <input placeholder="Last name" type="text" onChange={(e)=>setLname(e.target.value)} value={lastname}/>
+                            <img src={cross} alt="clear" onClick={()=>setLname('')} className="cross"/>
+                        </div>
+                    </div>
+                    <div className="profile-row">
+                        <div className="input">
+                            <img src={mailIcon} alt="mail icon"/>
+                            <input placeholder="Email" type="email" onChange={(e)=>setemail(e.target.value)} value={email}/>
+                            <img src={cross} alt="clear" onClick={()=>setemail('')} className="cross"/>
+                        </div>
+                        <div className="input">
+                            <img src={phoneIcon} alt="phone icon"/>
+                            <input placeholder="Mobile number" type="text" onChange={(e)=>setTelephone(e.target.value)} value={telephone}/>
+                            <img src={cross} alt="clear" onClick={()=>setTelephone('')} className="cross"/>
+                        </div>
+                    </div>
+                    <div className="profile-row">
+                        <div className="input">
+                            <img src={faxIcon} alt="fax icon"/>
+                            <input placeholder="Fax" type="text" onChange={(e)=>setFax(e.target.value)} value={fax}/>
+                            <img src={cross} alt="clear" onClick={()=>setFax('')} className="cross"/>
+                        </div>
+                        <div className="input">
+                            <img src={hashIcon} alt="hash icon"/>
+                            <input placeholder="Postal code" type="text" onChange={(e)=>setPcode(e.target.value)} value={postCode}/>
+                            <img src={cross} alt="clear" onClick={()=>setPcode('')} className="cross"/>
+                        </div>
+                    </div>
+                    <div className="full-width">
+                        <img src={locationIcon} alt="location"/>
+                        <input placeholder="Address" type="text" onChange={(e)=>setAdd1(e.target.value)} value={add1}/>
+                        <img src={cross} alt="clear" onClick={()=>setAdd1('')} className="cross"/>
+                    </div>
+                    <div className="full-width">
+                        <img src={locationIcon} alt="location"/>
+                        <input placeholder="City" type="text" onChange={(e)=>setCity(e.target.value)} value={city}/>
+                        <img src={cross} alt="clear" onClick={()=>setCity('')} className="cross"/>
+                    </div>
+                    <div className="profile-row">
+                        <div className="input">
+                            <img src={hashIcon} alt="hash icon"/>
+                            <input placeholder="Zone Id" type="text" onChange={(e)=>setZoneId(e.target.value)} value={zoneId}/>
+                            <img src={cross} alt="clear" onClick={()=>setZoneId('')} className="cross"/>
+                        </div>
+                        <div className="input">
+                            <img src={hashIcon} alt="hash icon"/>
+                            <input placeholder="Country code" type="text" onChange={(e)=>setCcode(e.target.value)} v/>
+                            <img src={cross} alt="clear" onClick={()=>setFname('')} className="cross"/>
+                        </div>
+                    </div>
+                    <div className="profile-row btn">
+                        <button className="change-password">Change password</button>
+                        <button className="save">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <Footer/>
+        </>
     )
 }
 

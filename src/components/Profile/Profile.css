@@ -1,0 +1,100 @@
+.profile-container{
+    min-width: 100%;
+    padding: 60px 80px;
+    overflow-x: hidden;
+}
+
+.profile-heading{
+    width: fit-content;
+    padding: 20px 40px;
+    text-align: center;
+    color: #0E79BD;
+    text-transform: capitalize;
+    border-bottom: 2px solid #0E79BD;
+}
+
+.form{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 100px;
+    padding: 0 80px;
+}
+.profile-row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.profile-row img{
+    width: 30px;
+}
+.input input{
+    width: 400px;
+    height: 40px;
+    border-radius: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 27px -3px rgba(14, 121, 189, 0.25);
+    outline: none;
+    border: none;
+    padding: 10px;
+
+}
+
+.full-width{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.full-width img{
+    width: 30px;
+    height: 30px;
+}
+
+.full-width input{
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 27px -3px rgba(14, 121, 189, 0.25);
+    outline: none;
+    border: none;
+    padding: 10px;
+}
+
+.cross{
+    cursor: pointer;
+    position: relative;
+    right: 50px;
+}
+
+.full-width .cross{
+    top: 5px;
+}
+
+.profile-row.btn{
+    width: 100%;
+}
+
+.profile-row.btn button{
+    width: 400px;
+    text-align: center;
+    height: 30px;
+    margin: 20px;
+    outline: none;
+    border-radius: 20px;
+}
+
+.change-password{
+    background: white;
+    border: 2px solid #0E79BD;
+    color: #0E79BD;
+}
+
+.save{
+    background: #0E79BD;
+    color: white;
+    border: none;
+}
+

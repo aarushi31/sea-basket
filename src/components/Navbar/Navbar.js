@@ -30,14 +30,8 @@ function Navbar() {
       history.push('/login');
     }
     const showLogin=()=>{
-      if(!user){
-        return(
-          <Rbs.Nav.Link href="/login" style={{width:'100px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'25px'}}>
-        Login
-      </Rbs.Nav.Link>
-        )
-      }
-      else if(user){
+      
+      if(user && user.customer_id!==null){
         return(
           <div style={{display:'flex',width:'22vw',justifyContent:'space-between'}}>
           <span style={{width:'120px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer',borderRadius:'25px'}}>
@@ -47,6 +41,13 @@ function Navbar() {
         Logout
       </span>
       </div>
+        )
+      }
+      else{
+        return(
+          <Rbs.Nav.Link href="/login" style={{width:'100px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'25px'}}>
+        Login
+      </Rbs.Nav.Link>
         )
       }
     }

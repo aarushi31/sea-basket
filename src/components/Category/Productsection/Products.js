@@ -64,7 +64,7 @@ function Products() {
             <hr className="line2"/>
             {/* <h3 className="product-headings">Our Bestsellers</h3> */}
             <div className="products">
-                {products.map((item,index)=>{
+                {products.map((item,index)=>{ 
                     return(
                         <div className="product">
                             <img src={item.thumb} alt="product-img" className="product-img"/>

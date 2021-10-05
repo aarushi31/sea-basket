@@ -1,0 +1,20 @@
+.wishlist-container{
+    min-width: 100%;
+    padding: 60px 80px;
+    overflow-x: hidden;
+}
+
+.wishlist-heading{
+    width: fit-content;
+    padding: 20px 40px;
+    text-align: center;
+    color: #0E79BD;
+    text-transform: capitalize;
+    border-bottom: 2px solid #0E79BD;
+}
+
+@media screen and (max-width:760px){
+    .wishlist-container{
+        padding: 60px 0;
+    }
+}

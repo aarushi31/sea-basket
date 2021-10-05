@@ -13,6 +13,7 @@ import Profile from './components/Profile/Profile'
 import { useDispatch } from 'react-redux';
 import {login} from './features/userSlice'
 import About from './components/About/About';
+import Wishlist from './components/Wishlist/Wishlist';
 
 
 //export const UserContext=createContext();
@@ -44,6 +45,7 @@ function App() {
         <Route path="/register" component={Register}/>
         <Route path="/login" component={Login}/>
         <Route path="/editprofile" component={Profile}/>
+        <Route path="/wishlist" component={Wishlist}/>
         
       </Switch>
       
