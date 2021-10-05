@@ -106,7 +106,7 @@ function Login() {
                 </form>
             </div>
             <center><h2 className="profile-footer">OR</h2></center>
-            <center><b>New here?</b><Link to="/login">Create an account</Link></center>
+            <center><b>New here?</b><Link to="/register">Create an account</Link></center>
         </div>
         <Footer/>
         </>
