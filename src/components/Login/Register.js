@@ -202,7 +202,7 @@ function Register() {
                             </div>
                     </div>
                     <div className="profile-row btn">
-                        <button className="save" onClick={handlesave} disabled={!agree}>Register</button>
+                        <center><button className="save" onClick={handlesave} disabled={!agree}>Register</button></center>
                     </div>
                 </form>
             </div>
