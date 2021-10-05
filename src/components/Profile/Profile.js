@@ -12,9 +12,11 @@ import mailIcon from '../../images/icons/mail.png'
 import cross from '../../images/icons/cross.png'
 import './Profile.css'
 import Footer from '../Home/Footer/Footer';
+import { useHistory } from 'react-router';
 
 
 function Profile() {
+    const history=useHistory();
     const user=useSelector(selectUser);
     const [firstname,setFname]=useState();
     const [lastname,setLname]=useState();
@@ -36,6 +38,15 @@ function Profile() {
         window.alert('Your profile has been updated')
     }
 
+    const handleChange=(e)=>{
+        history.push('/changePassword')
+    }
+
+    const handleSave=(e)=>{
+        e.preventDefault();
+        window.alert('Your profile has been updated')
+        history.push('/')
+    }
 
 
 
@@ -105,8 +116,8 @@ function Profile() {
                         </div>
                     </div>
                     <div className="profile-row btn">
-                        <button className="change-password">Change password</button>
-                        <button className="save">Save changes</button>
+                        <button className="change-password" onClick={handleChange}>Change password</button>
+                        <button className="save" onClick={handleSave}>Save changes</button>
                     </div>
                 </form>
             </div>

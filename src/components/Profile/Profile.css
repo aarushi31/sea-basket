@@ -6,13 +6,24 @@
 
 .profile-heading{
     width: fit-content;
-    padding: 20px 40px;
+    padding:10px 40px;
     text-align: center;
     color: #0E79BD;
     text-transform: capitalize;
     border-bottom: 2px solid #0E79BD;
+    
 }
 
+.profile-footer{
+    width: 300px;
+    padding: 20px 40px;
+    text-align: center;
+    color: #0E79BD;
+    text-transform: uppercase;
+    border-bottom:2px solid #0E79BD;
+    font-size: 22px;
+    margin-top: 60px;
+}
 .form{
     display: flex;
     width: 100%;
@@ -40,6 +51,16 @@
     border: none;
     padding: 10px;
 
+}
+
+.input-checkbox{
+    padding-top: 20px;
+    padding-right:40px ;
+}
+
+.input-checkbox input[type=checkbox]{
+    outline:2px solid #0E79BD;
+    border: none;
 }
 
 .full-width{
@@ -96,5 +117,9 @@
     background: #0E79BD;
     color: white;
     border: none;
+}
+
+@media screen and (max-width:760px){
+    
 }
 

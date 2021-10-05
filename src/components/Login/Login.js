@@ -5,6 +5,11 @@ import { useHistory } from 'react-router';
 import {Link} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import {login} from '../../features/userSlice'
+import Footer from '../Home/Footer/Footer';
+import mailIcon from '../../images/icons/mail.png'
+import cross from '../../images/icons/cross.png'
+import eye from '../../images/icons/eye.png'
+import lock from '../../images/icons/lock.png'
 
 function Login() {
     //const {state,dispatch}=useContext(UserContext)
@@ -54,20 +59,57 @@ function Login() {
 
     }
 
+    const [newType,setNewType]=useState('password');
+
+    const handleEye2=()=>{
+        if(newType==='password'){
+            setNewType('text')
+        }
+        else if(newType==='text'){
+            setNewType('password')
+        }
+    }
+
+    const handlesave=()=>{
+        window.alert('Logged in successfully');
+        localStorage.setItem('customer_id',5);
+        localStorage.setItem('loggedIn',true);
+        localStorage.setItem('email',email);
+       
+        window.location.href="/";
+        
+
+    }
+
 
     return (
-        <Form style={{padding:'30px 120px'}}>
-            <center>Login | <Link to="/register">Create an account</Link></center>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="John" value={email} onChange={(e)=>setemail(e.target.value)} required/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)} required/>
-            </Form.Group>
-            <Button variant="primary" onClick={(e)=>handleSubmit(e)}>Login</Button>{' '}
-        </Form>
+        <>
+        <div className="profile-container">
+            <center><h2 className="profile-heading">Login</h2></center>
+            <div className="form">
+                <form>
+                    <div className="profile-row">
+                        <div className="input">
+                            <img src={mailIcon} alt="mail icon"/>
+                            <input placeholder="Email" type="email" onChange={(e)=>setemail(e.target.value)} value={email}/>
+                            <img src={cross} alt="clear" onClick={()=>setemail('')} className="cross"/>
+                        </div>
+                        <div className="input">
+                            <img src={lock} alt="lock"/>
+                            <input placeholder="New Password" type={newType} onChange={(e)=>setPassword(e.target.value)} value={password}/>
+                            <img src={eye} alt="visible" onClick={handleEye2} className="cross"/>
+                        </div>
+                    </div>
+                    <div className="profile-row btn">
+                        <button className="save" onClick={handlesave}>Login</button>
+                    </div>
+                </form>
+            </div>
+            <center><h2 className="profile-footer">OR</h2></center>
+            <center><b>New here?</b><Link to="/login">Create an account</Link></center>
+        </div>
+        <Footer/>
+        </>
     )
 }
 

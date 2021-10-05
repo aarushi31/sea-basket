@@ -8,12 +8,13 @@ import Product from './components/Products/Product';
 import Cart from './components/Cart/Cart';
 import Register from './components/Login/Register';
 import Login from './components/Login/Login';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Profile from './components/Profile/Profile'
 import { useDispatch } from 'react-redux';
 import {login} from './features/userSlice'
 import About from './components/About/About';
 import Wishlist from './components/Wishlist/Wishlist';
+import ChangePassword from './components/Profile/ChangePassword';
 
 
 //export const UserContext=createContext();
@@ -46,6 +47,7 @@ function App() {
         <Route path="/login" component={Login}/>
         <Route path="/editprofile" component={Profile}/>
         <Route path="/wishlist" component={Wishlist}/>
+        <Route path="/changePassword" component={ChangePassword}/>
         
       </Switch>
       
