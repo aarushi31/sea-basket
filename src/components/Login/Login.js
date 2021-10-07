@@ -90,12 +90,12 @@ function Login() {
                 <form>
                     <div className="profile-row">
                         <div className="input">
-                            <img src={mailIcon} alt="mail icon"/>
+                            <img src={mailIcon} alt="mail icon" className="input-icon"/>
                             <input placeholder="Email" type="email" onChange={(e)=>setemail(e.target.value)} value={email}/>
                             <img src={cross} alt="clear" onClick={()=>setemail('')} className="cross"/>
                         </div>
                         <div className="input">
-                            <img src={lock} alt="lock"/>
+                            <img src={lock} alt="lock" className="input-icon"/>
                             <input placeholder="New Password" type={newType} onChange={(e)=>setPassword(e.target.value)} value={password}/>
                             <img src={eye} alt="visible" onClick={handleEye2} className="cross"/>
                         </div>

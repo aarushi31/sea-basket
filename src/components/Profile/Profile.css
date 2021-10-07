@@ -120,6 +120,44 @@
 }
 
 @media screen and (max-width:760px){
-    
+    .profile-row{
+        
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }  
+    .profile-row img{
+        width: 20px;
+    } 
+    .input input{
+        width: 60vw;
+        height: 30px;
+
+    }
+    .full-width input{
+        width: 70vw;
+        height: 30px;
+    }
+
+    .profile-row.btn button{
+        width: 60vw;
+        position: relative;
+        right: 120px;
+    }
+    .input-icon{
+        position: relative;
+        top: 25px;
+        right: 20px;
+    }
+
+    .cross{
+        position: relative;
+        left: 200px;
+        bottom: 26px;
+    }
+    .profile-footer{
+        width: 50%;
+        padding: 10px 0;
+    }
 }
 

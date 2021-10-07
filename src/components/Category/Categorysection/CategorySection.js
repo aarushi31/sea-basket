@@ -5,6 +5,12 @@ import c1 from '../../../images/c1.png';
 import c2 from '../../../images/c2.png';
 import sub1 from '../../../images/sub1.png'
 import sub2 from '../../../images/sub2.png'
+import river from '../../../images/river.jpg'
+import sea from '../../../images/sea.jpg'
+import crab from '../../../images/crabs.jpg'
+import lobster from '../../../images/lobster.jpg'
+import oyster from '../../../images/oyster.jpg'
+import prawn from '../../../images/prawn.jpg'
 import axios from 'axios'
 import { useHistory } from 'react-router';
 
@@ -42,6 +48,53 @@ function CategorySection() {
         // }
         history.push('/category')
     }
+
+    const showSubCategory=()=>{
+        if(localStorage.getItem('category_id')==20){
+            return(
+                <>
+                <h3 className="category-heading2" style={{marginTop:"100px"}}>Fish</h3>
+                    <div className="cat-subcontainer" style={{justifyContent:'flex-start'}}>
+                            <div className="box2" style={{marginLeft:"50px"}}>
+                            <img src={river} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
+                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>River Fish</span>
+                        </div> 
+                        <div className="box2" style={{marginLeft:"50px"}}>
+                            <img src={sea} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
+                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>Sea Fish</span>
+                        </div> 
+                        
+                    </div>
+                    </>
+            )
+        }
+        else if(localStorage.getItem('category_id')==25){
+            return(
+                <>
+                <h3 className="category-heading2" style={{marginTop:"100px"}}>Crustaceans</h3>
+                    <div className="cat-subcontainer" style={{justifyContent:'flex-start'}}>
+                            <div className="box2" style={{marginLeft:"50px"}}>
+                            <img src={crab} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
+                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"10px"}}>Crabs</span>
+                        </div> 
+                        <div className="box2" style={{marginLeft:"50px"}}>
+                            <img src={lobster} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
+                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"10px"}}>Lobsters</span>
+                        </div> 
+                        <div className="box2" style={{marginLeft:"50px"}}>
+                            <img src={oyster} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
+                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"10px"}}>Oysters</span>
+                        </div> 
+                        <div className="box2" style={{marginLeft:"50px"}}>
+                            <img src={prawn} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
+                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"10px"}}>Prawns</span>
+                        </div> 
+                        
+                    </div>
+                    </>
+            )
+        }
+    }
     
 
     return (
@@ -58,6 +111,7 @@ function CategorySection() {
                     </div>
                 )
             })}
+
         </div>
         
             
@@ -70,7 +124,7 @@ function CategorySection() {
                 <img src={sub2} style={{width:"310px",height:"188px",paddingBottom:"35px"}}/>
                 <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>RIVER FISH</span>
             </div> */}
-            {categories.map((item,index)=>{
+            {/* {categories.map((item,index)=>{
                 if(item.category_id==localStorage.getItem('category_id')){
                 return(
                     <>
@@ -91,7 +145,8 @@ function CategorySection() {
                     </>
                 )
                 }
-            })}
+            })} */}
+            {showSubCategory()}
 
         
         <h3 className="category-heading3" style={{marginTop:"100px"}}>PRODUCTS</h3>
