@@ -79,6 +79,9 @@ function Cart() {
                 <Col>₹ 1200.00</Col>
             </Row>
             </Container>
+            <div className="buy-buttons" style={{justifyContent:'center',width:'100%'}}>
+                <button className="button buyNow">Place order</button>
+            </div>
             </Container>
             <Footer/>
         </div>

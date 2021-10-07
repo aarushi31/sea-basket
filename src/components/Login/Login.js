@@ -90,19 +90,19 @@ function Login() {
             <center><h2 className="profile-heading">Login</h2></center>
             <div className="form">
                 <form>
-                    <div className="profile-row">
+                    <div className="profile-row" style={{flexDirection:'column',justifyContent:'center',marginLeft:'20vw'}}>
                         <div className="input">
                             <img src={mailIcon} alt="mail icon" className="input-icon"/>
                             <input placeholder="Email" type="email" onChange={(e)=>setemail(e.target.value)} value={email}/>
                             <img src={cross} alt="clear" onClick={()=>setemail('')} className="cross"/>
                         </div>
-                        <div className="input">
+                        <div className="input" style={{marginTop:'50px'}}>
                             <img src={lock} alt="lock" className="input-icon"/>
                             <input placeholder="New Password" type={newType} onChange={(e)=>setPassword(e.target.value)} value={password}/>
                             <img src={eye} alt="visible" onClick={handleEye2} className="cross"/>
                         </div>
                     </div>
-                    <div className="profile-row btn">
+                    <div className="profile-row btn" style={{marginLeft:'25vw'}}>
                         <button className="save" onClick={handlesave}>Login</button>
                     </div>
                 </form>
