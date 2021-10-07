@@ -70,8 +70,10 @@ function Login() {
         }
     }
 
-    const handlesave=()=>{
-        window.alert('Logged in successfully');
+    const handlesave=(e)=>{
+        e.preventDefault();
+        history.push('/')
+        //window.alert('Logged in successfully');
         localStorage.setItem('customer_id',5);
         localStorage.setItem('loggedIn',true);
         localStorage.setItem('email',email);
