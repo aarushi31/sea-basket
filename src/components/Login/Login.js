@@ -102,7 +102,7 @@ function Login() {
                             <img src={eye} alt="visible" onClick={handleEye2} className="cross"/>
                         </div>
                     </div>
-                    <div className="profile-row btn" style={{marginLeft:'25vw'}}>
+                    <div className="profile-row btn" style={{marginLeft:'15vw'}}>
                         <button className="save" onClick={handlesave}>Login</button>
                     </div>
                 </form>
