@@ -9,6 +9,9 @@ import heart_filled from '../../../images/icons/heart_filled.svg'
 function Products() {
 
     const [products,setProducts]=useState([]);
+    const username=localStorage.getItem('customer_id');
+    const password=localStorage.getItem('password')
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
     const config={
         headers:{
             'Content-Type':'application/json',
@@ -44,7 +47,7 @@ function Products() {
             method: 'post',
             url: 'http://proffus.pythonanywhere.com/api/addtowishlist/',
             headers: { 
-              'Authorization': 'Basic NDpzaGEyNTYkSEZBNmpvUlFBT1VhckJ4byQ4MTUyNmZlYWYzNGMwYWQ5M2QxYTNmMTRkZTRhYjUxMTM4NDgyMmEzZmI3YzU0Njg0ZjFmNTg5NDdjNjdkZGYy', 
+              'Authorization': `Basic ${token}`, 
               'Content-Type': 'application/json'
             },
             data : data
