@@ -33,7 +33,9 @@ function Navbar() {
       
       if(user && user.customer_id!==null){
         return(
-          <div style={{display:'flex',width:'22vw',justifyContent:'space-between'}}>
+          <div style={{display:'flex',width:'37vw',justifyContent:'space-between'}}>
+            <Rbs.Nav.Link href="/cart" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>My Cart</Rbs.Nav.Link>
+      <Rbs.Nav.Link href="/wishlist" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>Wishlist</Rbs.Nav.Link>
           <span style={{width:'120px',background:'#0E79BD',color:'white',display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer',borderRadius:'25px'}}>
         <a href="/editprofile" style={{color:'white',textDecoration:'none'}}>My profile</a>
       </span>
@@ -94,8 +96,7 @@ function Navbar() {
     <Rbs.Nav>
       <Rbs.Nav.Link href="/category" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>Category</Rbs.Nav.Link>
       <Rbs.Nav.Link href="/aboutus" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>About us</Rbs.Nav.Link>
-      <Rbs.Nav.Link href="/cart" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>My Cart</Rbs.Nav.Link>
-      <Rbs.Nav.Link href="/wishlist" style={{color:'#0E79BD',fontWeight:'600',marginRight:'30px'}}>Wishlist</Rbs.Nav.Link>
+      
       {showLogin()}
       
     </Rbs.Nav>
