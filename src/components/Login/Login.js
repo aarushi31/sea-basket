@@ -1,5 +1,5 @@
 import React,{useState,useReducer, useContext} from 'react'
-import {Form,InputGroup,Button,FormControl} from 'react-bootstrap'
+import {Form,InputGroup,Button,FormControl, Alert} from 'react-bootstrap'
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import {Link} from 'react-router-dom'
@@ -19,43 +19,55 @@ function Login() {
     const [email,setemail]=useState();
     const [password,setPassword]=useState();
     const [customerid,setCustomerid]=useState();
+    const [error,setError]=useState('')
 
     const history=useHistory();
-    const postdata={
-        email:email,
-        password:password
-    }
-
-    let config={
-        headers:{
-            'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'
-        }
-    }
+    var data = JSON.stringify({
+        "email": email,
+        "password": password
+      });
+      
+      var config = {
+        method: 'post',
+        url: 'http://proffus.pythonanywhere.com/api/login/',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+    
     const handleSubmit=(e)=>{
-        //e.preventDefault();
-        axios.post('https://seabasket.citypetcare.in/api/login/key/654784578114',postdata,config)
+        e.preventDefault();
+        axios(config)
         .then(res=>{
             console.log(res);
             if(res.data.success){
+                console.log(res.data.customer_id)
                 dispatch(login({
                     email:email,
-                    customer_id:res.data.userdata.customer_id,
+                    customer_id:res.data.customer_id,
+                    password:res.data.sha,
                     loggedIn:true,
                     
                 }))
-                localStorage.setItem('customer_id',res.data.userdata.customer_id);
                 localStorage.setItem('loggedIn',true);
+                localStorage.setItem('customer_id',res.data.customer_id);
                 localStorage.setItem('email',email);
-                //window.alert("You have loggedin successfully");
+                localStorage.setItem('password',res.data.sha);
                 history.push('/category');
+                //window.alert("You have loggedin successfully");
+                
             }
             else{
-                window.alert("Error logging in");
+                setError(res.data.error);
             }
         })
         .catch(err=>{
             console.log(err);
+            setError('Error logging in')
         })
+        setemail('');
+        setPassword('')
 
     }
 
@@ -89,7 +101,8 @@ function Login() {
         <div className="profile-container">
             <center><h2 className="profile-heading">Login</h2></center>
             <div className="form">
-                <form>
+                {error && <Alert variant="danger">{error}</Alert>}
+                <form onSubmit={handleSubmit}>
                     <div className="profile-row" style={{flexDirection:'column',justifyContent:'center',marginLeft:'20vw'}}>
                         <div className="input">
                             <img src={mailIcon} alt="mail icon" className="input-icon"/>
@@ -103,7 +116,7 @@ function Login() {
                         </div>
                     </div>
                     <div className="profile-row btn" style={{marginLeft:'16vw'}}>
-                        <button className="save" onClick={handlesave}>Login</button>
+                        <button className="save" onClick={handleSubmit}>Login</button>
                     </div>
                 </form>
             </div>

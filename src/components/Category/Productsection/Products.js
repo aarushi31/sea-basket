@@ -9,12 +9,20 @@ import heart_filled from '../../../images/icons/heart_filled.svg'
 function Products() {
 
     const [products,setProducts]=useState([]);
+    const config={
+        headers:{
+            'Content-Type':'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Credentials':true
+        }
+    }
 
     useEffect(()=>{
-        axios.get('https://seabasket.citypetcare.in/api/products/key/654784578114')
+        const scid=localStorage.getItem('scid')?localStorage.getItem('scid'):1;
+        axios.post('http://proffus.pythonanywhere.com/api/products/',config)
         .then(res=>{
-            console.log(res.data.response);
-            setProducts(res.data.response);
+            console.log(res);
+            setProducts(res.data.Products);
         })
         .catch(err=>{
             console.log(err)
@@ -22,12 +30,32 @@ function Products() {
     },[])
     const [added, setAdded] = useState(false);
 
-    const addWishlist=(e)=>{
+    const addWishlist=(pid,e)=>{
         e.preventDefault();
         //window.alert('Added to wishlist');
         //setImgSrc(heart_filled)
         
         //setAdded(!added);    
+        var data = JSON.stringify({
+            "pid": pid
+          });
+          
+          var config = {
+            method: 'post',
+            url: 'http://proffus.pythonanywhere.com/api/addtowishlist/',
+            headers: { 
+              'Authorization': 'Basic NDpzaGEyNTYkSEZBNmpvUlFBT1VhckJ4byQ4MTUyNmZlYWYzNGMwYWQ5M2QxYTNmMTRkZTRhYjUxMTM4NDgyMmEzZmI3YzU0Njg0ZjFmNTg5NDdjNjdkZGYy', 
+              'Content-Type': 'application/json'
+            },
+            data : data
+          };
+          axios(config)
+            .then(function (response) {
+            console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
         
         if(e.target.dataset.wishlist!==undefined)
         {
@@ -40,6 +68,12 @@ function Products() {
             e.target.setAttribute('data-wishlist','true');
         }
     }
+
+
+
+
+
+    
 
  
     return (
@@ -67,14 +101,14 @@ function Products() {
                 {products.map((item,index)=>{ 
                     return(
                         <div className="product">
-                            <img src={item.thumb} alt="product-img" className="product-img"/>
+                            <img src={item.image_url} alt="product-img" className="product-img"/>
                             <span className="prod-name">{item.name}</span>
-                            <span className="disc-price">₹ {item.special?parseFloat(item.special):parseFloat(item.price)}</span>
-                            {item.special && <span className="orig-price">₹ {parseFloat(item.price)}</span>}
+                            <span className="disc-price">₹ {item.after_sale_price?parseFloat(item.after_sale_price):parseFloat(item.actual_price)}</span>
+                            {item.after_sale_price && <span className="orig-price">₹ {parseFloat(item.actual_price)}</span>}
                             <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
                             <div style={{display:'flex',width:'100%',justifyContent:'space-evenly'}}>
-                            <span className="add"><Link to={{pathname: `/product/${item.product_id}`}}>Add to cart</Link></span>
-                            <span style={{cursor:'pointer'}}><img src={heart_outline} alt="Wishlist" onClick={(e)=>addWishlist(e)} data-wishlist /></span>
+                            <span className="add"><Link to={{pathname: `/product/${item.pid}`}}>Add to cart</Link></span>
+                            <span style={{cursor:'pointer'}}><img src={heart_outline} alt="Wishlist" onClick={(e)=>addWishlist(item.pid,e)} data-wishlist /></span>
                             </div>
                         </div>
                     )

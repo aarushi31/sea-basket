@@ -3,8 +3,14 @@ import { useHistory } from 'react-router';
 import eye from '../../images/icons/eye.png'
 import lock from '../../images/icons/lock.png'
 import Footer from '../Home/Footer/Footer';
+import axios from 'axios'
+import {useDispatch, useSelector} from 'react-redux';
+import {selectUser} from '../../features/userSlice'
+import { Alert } from 'react-bootstrap';
+import { Data } from '../Home/FAQ/Data';
 
 function ChangePassword() {
+    const user=useSelector(selectUser)
     const history=useHistory();
     const [old,setOld]=useState('');
     const [newP,setNew]=useState('');
@@ -13,6 +19,12 @@ function ChangePassword() {
     const [oldType,setOldType]=useState('password');
     const [newType,setNewType]=useState('password');
     const [confirmType,setConfirmType]=useState('password');
+    const [error,setError]=useState('');
+    const [message,setMessage]=useState('');
+
+
+
+
 
     const handleEye1=()=>{
         if(oldType==='password'){
@@ -39,21 +51,45 @@ function ChangePassword() {
             setConfirmType('password')
         }
     }
+    const email=localStorage.getItem('email');
 
-    const handlesave=()=>{
+    const postdata={
+        email:email,
+        old_password:old,
+        new_password:newP
+    }
+    //console.log(postdata.email)
+    const handlesave=(e)=>{
+        e.preventDefault()
+        setError('')
         if(newP!==confirm){
-            window.alert('New and confirm passwords are different')
+            setError('New and confirm passwords are different')
         }
         else if(!newP || !confirm){
-            window.alert('Please fill all the fields')
+            setError('Please fill all the fields')
         }
         else if(newP===old){
-            window.alert("You can't update to your old password")
+            setError("You can't update to your old password")
         }
         else{
-            window.alert('Your password has been updated');
-            history.push('/editprofile')
+            axios.post('http://proffus.pythonanywhere.com/api/editPassword',postdata)
+            .then(res=>{
+                console.log(res);
+                if(res.data.success){
+                    setMessage('Password updated successfully!')
+                }
+                else if(!res.data.success){
+                    setError(res.data.error)
+                }
+            })
+            .catch(err=>{
+                console.log(err);
+                setError('Error updating password')
+            })
         }
+        setNew('')
+        setOld('')
+        setConfirm('')
     }
 
     return (
@@ -61,6 +97,8 @@ function ChangePassword() {
             <div className="profile-container">
                 <center><h2 className="profile-heading">Change Password</h2></center>
                     <div className="form">
+                        {error && <Alert variant="danger">{error}</Alert>}
+                        {message && <Alert variant="success">{message}</Alert>}
                         <form>
                             <div className="full-width">
                                 <img src={lock} alt="lock"/>

@@ -4,12 +4,13 @@ import axios from 'axios';
 import {Carousel} from 'react-bootstrap'
 
 function Cover() {
-    const [images,setImages]=useState([]);
+    const [images,setImages]=useState();
     useEffect(()=>{
-        axios.get('https://seabasket.citypetcare.in/api/getbannerbyname/bannername/Home%20Page%20Slideshow/key/654784578114')
+        axios.post('http://proffus.pythonanywhere.com/api/getbannerbyname/bannername/Fish_Oil')
         .then(res=>{
-            console.log(res.data.response);
-            setImages(res.data.response);
+            console.log(res.data.banner.b_url);
+            setImages(res.data.banner.b_url);
+            console.log(images)
             //console.log(images);
             //console.log(images[0].image)
         })
@@ -23,7 +24,7 @@ function Cover() {
         //     <img src={c3} alt="Cover image" style={{width:"100%"}}/>
         // </div>
         <Carousel>
-            {images.map((item,index)=>{
+             {/* {images.map((item,index)=>{
                 return(
                     <Carousel.Item key={index}>
                         <img
@@ -34,15 +35,16 @@ function Cover() {
 
                     </Carousel.Item>
                 )
-            })}
-            {/* <Carousel.Item>
+            })}  */}
+            <Carousel.Item>
                         <img
                         className="d-block w-100"
-                        src={images[0].image}
+                        src={images}
                         alt="Second slide"
+                        style={{height:'500px'}}
                         />
 
-            </Carousel.Item> */}
+            </Carousel.Item>
   
   {/* <Carousel.Item>
     <img

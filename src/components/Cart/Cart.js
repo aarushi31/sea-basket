@@ -12,34 +12,65 @@ import { Redirect } from 'react-router'
 
 function Cart() {
     
-    // if(!state.loggedin){
-    //     return(
-    //         <Login/>
-    //     )
-    // }
     const [cart,setCart]=useState([]);
     const user=useSelector(selectUser);
+
+    const username=localStorage.getItem('customer_id');
+    const password=localStorage.getItem('password')
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+
+    
    
-    let config={
-        headers:{
-            'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'
-        }
+    
+
+    useEffect(()=>{
+        var data=''
+        var config = {
+            method: 'post',
+            url: 'http://proffus.pythonanywhere.com/api/cartproduct/',
+            headers: { 
+              'Authorization': `Basic ${token}`
+            },
+            data : data
+          };
+          
+          axios(config)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+            setCart(response.data.Cart)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+          
+    },[])
+
+    const handleRemove=(pid,e)=>{
+        e.preventDefault()
+        var data = JSON.stringify({
+            "pid": pid,
+            "quantity": 1
+          });
+          
+          var config = {
+            method: 'post',
+            url: 'http://proffus.pythonanywhere.com/api/removefromcart/',
+            headers: { 
+              'Authorization': `Basic ${token}`, 
+              'Content-Type': 'application/json'
+            },
+            data : data
+          };
+          
+          axios(config)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
-
-    // const postdata={
-    //     customer_id:user.customer_id
-    // };
-    // console.log(postdata)
-
-    // useEffect(()=>{
-    //     axios.post('https://seabasket.citypetcare.in/api/cartproduct/key/654784578114',postdata,config)
-    //     .then(res=>{
-    //         console.log(res);
-    //     })
-    //     .catch(err=>{
-    //         console.log(err)
-    //     })
-    // },[])
+   
 
     return (
         <div>
@@ -52,35 +83,28 @@ function Cart() {
                 <Col><b>QUANTITY</b></Col>
                 <Col><b>PRICE</b></Col>
             </Row>
-            <Row style={{marginTop:'30px'}}>
+            {cart && cart.map((item,idx)=>{
+                return(
+                    <Row style={{marginTop:'30px'}} key={idx}>
                 <Col className="item-col">
-                    <img src={katla} style={{width:'150px',borderRadius:'12px'}}/>
+                    <img src={item.image_url} style={{width:'150px',borderRadius:'12px'}}/>
                     <div className="item-details">
-                        <span><b>Catla</b></span>
-                        <span>₹ 690.00</span>
-                        <span>Medium(+20.00)</span>
-                        <span className="remove-item">Remove Item</span>
+                        <span><b>{item.name}</b></span>
+                        <span>₹ {parseFloat(item.after_sale_price)}</span>
+                        <span className="remove-item" onClick={(e)=>handleRemove(item.pid,e)}>Remove Item</span>
                     </div>
                 </Col>
                 <Col>2</Col>
                 <Col>₹ 1200.00</Col>
             </Row>
-            <Row style={{marginTop:'30px'}}>
-                <Col className="item-col">
-                    <img src={katla} style={{width:'150px',borderRadius:'12px'}}/>
-                    <div className="item-details">
-                        <span><b>Catla</b></span>
-                        <span>₹ 690.00</span>
-                        <span>Medium(+20.00)</span>
-                        <span className="remove-item">Remove Item</span>
-                    </div>
-                </Col>
-                <Col>2</Col>
-                <Col>₹ 1200.00</Col>
-            </Row>
+                )
+            })}
+            
+            
             </Container>
             <div className="buy-buttons" style={{justifyContent:'center',width:'100%'}}>
-                <button className="button buyNow">Place order</button>
+                {cart.length!==0 && <button className="button buyNow">Place order</button>}
+                {cart.length===0 && <center><span style={{fontSize:"30px",fontWeight:"500",color:"#0E79BD"}}>Cart is empty</span></center>}
             </div>
             </Container>
             <Footer/>

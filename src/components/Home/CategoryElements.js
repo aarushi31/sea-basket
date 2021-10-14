@@ -10,19 +10,31 @@ import { useHistory } from 'react-router';
 function CategoryElements() {
     const history=useHistory();
     const [categories,setCategory]=useState([]);
+    const config={
+        headers:{
+            'Content-Type':'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Credentials':true
+        }
+    }
+
     useEffect(()=>{
-        axios.get('https://seabasket.citypetcare.in/api/getCategories/key/654784578114')
+        axios.post('http://proffus.pythonanywhere.com/api/getCategories/',config)
         .then(res=>{
             console.log(res);
-            setCategory(res.data.response)
+            setCategory(res.data.Categories)
+
+        
         })
         .catch(err=>{
             console.log(err)
         })
+
+        
     },[])
 
     const setCategoryID=(id)=>{
-        localStorage.setItem('category_id',id);
+        localStorage.setItem('cid',id);
         history.push('/category')
     }
     return (
@@ -40,10 +52,10 @@ function CategoryElements() {
                 <img src={c2} style={{width:"205px",height:"100px"}}/>
                 <span style={{fontSize:"16px",fontWeight:"500"}}>Exotic</span>
             </div> */}
-            {categories.map((item,index)=>{
+            {categories && categories.map((item,index)=>{
                 return(
-                    <div className="box" key={index} onClick={()=>{setCategoryID(item.category_id)}}>
-                        <img src={item.image} style={{width:"205px",height:"100px"}}/>
+                    <div className="box" key={index} onClick={()=>{setCategoryID(item.cid)}}>
+                        <img src={item.url} style={{width:"205px",height:"100px"}}/>
                         <span style={{fontSize:"16px",fontWeight:"500"}}>{item.name}</span>
                     </div>
                 )

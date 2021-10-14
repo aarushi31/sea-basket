@@ -9,26 +9,57 @@ import {useDispatch, useSelector} from 'react-redux';
 import {selectUser} from '../../features/userSlice'
 import heart_outline from '../../images/icons/heart_outline.svg'
 import heart_filled from '../../images/icons/heart_filled.svg'
+import { Alert } from 'react-bootstrap'
 
 
 function Product() {
     const user=useSelector(selectUser)
     const [amt, setamt]=useState(1);
 
-    const [deets,setDeets]=useState({});
-    const [related,setRelated]=useState([]);
-    const {product_id}=useParams();
-    console.log(product_id)
+    const [desc,setDesc]=useState();
+    const [spec,setSpec]=useState();
+    const [name,setName]=useState();
+    const [optionId1,setOptionId1]=useState();
+    const [optionId2,setOptionId2]=useState();
+    const [optionId3,setOptionId3]=useState();
+    const [sale,setSale]=useState();
+    const [actual,setActual]=useState()
+    const [inStock,setInstock]=useState()
+    const [url,setUrl]=useState();
+    const [message,setMessage]=useState('')
+
+    const [option_id,setOptionId]=useState();
+    
+    const {pid}=useParams();
+
+    const username=localStorage.getItem('customer_id');
+    const password=localStorage.getItem('password')
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+
+    console.log(pid)
 
 
     useEffect(()=>{
 
-        axios.get(`https://seabasket.citypetcare.in/api/getProduct/p_id/${product_id}/key/654784578114`)
+        axios.post(`http://proffus.pythonanywhere.com/api/getProduct/p_id/${pid}`)
         .then(res=>{
-            console.log(res.data.response.product);
-            setDeets(res.data.response.product)
-            console.log(res.data.response.related);
-            setRelated(res.data.response.related)
+            console.log(res.data.Detail);
+            setName(res.data.Detail.name);
+            setDesc(res.data.Detail.description);
+            setSpec(res.data.Detail.specification);
+            setSale(res.data.Detail.after_sale_price);
+            setActual(res.data.Detail.actual_price);
+            setOptionId1(res.data.Detail.options[0].option_id)
+            setOptionId2(res.data.Detail.options[1].option_id)
+            setOptionId3(res.data.Detail.options[2].option_id)
+            setUrl(res.data.Detail.image_url)
+            setOptionId(optionId2)
+            if(res.data.Detail.in_stock==1 || res.data.Detail.in_stock==true || res.data.Detail.in_stock=="True"){
+                setInstock(true);
+            }
+            else{
+                setInstock(false)
+            }
         })
         .catch(err=>{
             console.log(err)
@@ -47,44 +78,26 @@ function Product() {
     }
 
     const [extra,setExtra]=useState(20);
-    const Pprice=deets.special?parseFloat(deets.special):parseFloat(deets.price);
+    const Pprice=sale;
     const [price,setPrice]=useState();
 
     console.log(price)
-    const handlePrice=(p)=>{
+    const handlePrice=(p,oid)=>{
         setExtra(p);
+        if(oid==1){
+            setOptionId(optionId1);
+        }
+        else if(oid==2){
+            setOptionId(optionId2);
+        }
+        else if(oid==3){
+            setOptionId(optionId3);
+        }
+
+        console.log(option_id)
     }
 
-    // const postdata={
-    //     customer_id:parseInt(user.customer_id),
-    //     product_id:parseInt(product_id),
-    //     quantity:amt
-
-    // }
-    // let config={
-    //     headers:{
-    //         'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'
-    //     }
-    // }
-
-    // const addToCart=()=>{
-    //     if(amt==0){
-    //         window.alert('Please select the no. of product');
-    //     }
-    //     else{
-    //         axios.post('https://seabasket.citypetcare.in/api/addcart/key/654784578114',postdata,config)
-    //         .then(res=>{
-    //             console.log(postdata.customer_id)
-    //             console.log(postdata.product_id)
-    //             console.log(res);
-                
-    //         })
-    //         .catch(err=>{
-    //             console.log(err)
-    //         })
-
-    //     }
-    // }
+    
 
     const addWishlist=(e)=>{
         e.preventDefault();
@@ -105,22 +118,53 @@ function Product() {
         }
     }
 
+    const handleAddToCart=(e)=>{
+        e.preventDefault();
+        setMessage('');
+        var data = JSON.stringify({
+            "pid": parseInt(pid),
+            "quantity": parseInt(amt),
+            "option_id": parseInt(option_id)
+          });
+          
+          var config = {
+            method: 'post',
+            url: 'http://proffus.pythonanywhere.com/api/addcart',
+            headers: { 
+              'Authorization': `Basic ${token}`, 
+              'Content-Type': 'application/json'
+            },
+            data : data
+          };
+          
+          axios(config)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+            setMessage('Added to cart')
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+          
+    }
+
     return ( 
         <div>
         <div className="prod-container">
             
             <div className="details">
-            <img src={deets.image} alt="Product image" className="prod-img"/>
+            <img src={url} alt="Product image" className="prod-img"/>
                 <div className="small-container">
                 <div className="prod-deets">
                     <div className="name-price">
-                        <span style={{fontSize:"24px",fontWeight:"600"}}>{deets.name} <span style={{cursor:'pointer'}}><img src={heart_outline} alt="Wishlist" onClick={(e)=>addWishlist(e)} data-wishlist /></span></span>
-                        <span style={{fontSize:"20px",color:'#0E79BD'}}>₹ {Pprice+extra}</span>
-                        {deets.special && <span style={{fontSize:'18px',color:'gray',textDecoration:'line-through'}}>₹ {parseFloat(deets.price)}</span>}
+                        <span style={{fontSize:"24px",fontWeight:"600"}}>{name}<span style={{cursor:'pointer'}}><img src={heart_outline} alt="Wishlist" onClick={(e)=>addWishlist(e)} data-wishlist /></span></span>
+                        <span style={{fontSize:"20px",color:'#0E79BD'}}>₹ {parseFloat(Pprice+extra)}</span>
+                        {actual && <span style={{fontSize:'18px',color:'gray',textDecoration:'line-through'}}>₹ {parseFloat(actual)}</span>}
 
                     </div>
                     
-                    <span className="stock">In Stock</span>
+                    {inStock && <span className="stock">In Stock</span>}
+                    {!inStock && <span className="stock" style={{border:'1px solid red'}}>Out Of Stock</span>}
                 </div>
                 <hr style={{width:'100%',background:'black',marginLeft:'20px'}}/>
                
@@ -134,9 +178,9 @@ function Product() {
                     </div> */}
                     <p style={{fontWeight:'600'}}>Select option</p>
                 <div className="options">
-                    <span className={`opt ${extra===10 ? "activeOpt":""}`} onClick={()=>handlePrice(10)}>Small(+10.00)</span>
-                    <span className={`opt ${extra===20 ? "activeOpt":""}`} onClick={()=>handlePrice(20)}>Medium(+20.00)</span>
-                    <span className={`opt ${extra===30 ? "activeOpt":""}`} onClick={()=>handlePrice(30)}>Large(+30.00)</span>
+                    <span className={`opt ${extra===10 ? "activeOpt":""}`} onClick={()=>handlePrice(10,1)}>Small(+10.00)</span>
+                    <span className={`opt ${extra===20 ? "activeOpt":""}`} onClick={()=>handlePrice(20,2)}>Medium(+20.00)</span>
+                    <span className={`opt ${extra===30 ? "activeOpt":""}`} onClick={()=>handlePrice(30,3)}>Large(+30.00)</span>
                 </div>
                 {/* <hr style={{width:'40vw',background:'black',marginRight:'40px'}}/> */}
                 <div className="amt-container">
@@ -157,26 +201,23 @@ function Product() {
             <hr className="hrLine"/>
             <div className="description">
                 <p style={{fontWeight:'600',lineHeight:'40px'}}>Description</p>
-                <p style={{marginTop:'20px'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <p style={{marginTop:'20px'}}>{desc}</p>
             </div>
             <hr className="hrLine"/>
             <div className="specification">
                 <p style={{fontWeight:'600',lineHeight:'40px'}}>Specification</p>
-                <p style={{marginTop:'20px'}}><b>Specification 1 :</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                <p><b>Specification 2 :</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                <p><b>Specification 3 :</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                <p><b>Specification 4 :</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                <p><b>Specification 5 :</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                <p><b>Specification 6 :</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                <p style={{marginTop:'20px'}}><b>Specification  :</b>{spec}</p>
+                
             </div>
             <hr className="hrLine"/>
+            {message && <Alert variant="success">{message}</Alert>}
             <div className="buy-buttons">
-                <button className="button add-to-cart">Add to cart</button>
+                <button className="button add-to-cart" onClick={handleAddToCart}>Add to cart</button>
                 <button className="button buyNow">Buy now</button>
             </div>
             <div className="similar">
-                <p style={{fontWeight:'600',lineHeight:'40px'}}>View similar products</p>
-                <div className="similar-products">
+                {/* <p style={{fontWeight:'600',lineHeight:'40px'}}>View similar products</p> */}
+                {/* <div className="similar-products">
                     {related.map((item,index)=>{
                         return(
                                 <div className="product">
@@ -196,7 +237,7 @@ function Product() {
                 
                 
                 
-                </div>
+                </div> */}
             </div>
         </div>
         <Footer/>

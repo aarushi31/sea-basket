@@ -17,13 +17,22 @@ import { useHistory } from 'react-router';
 function CategorySection() {
 
     const [categories,setCategory]=useState([]);
+    const [subCategories,setSubcategories]=useState([]);
     const history=useHistory()
 
+    const config={
+        headers:{
+            'Content-Type':'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Credentials':true
+        }
+    }
+
     useEffect(()=>{
-        axios.get('https://seabasket.citypetcare.in/api/getCategories/key/654784578114')
+        axios.post('http://proffus.pythonanywhere.com/api/getCategories/',config)
         .then(res=>{
-            console.log(res.data.response[0]);
-            setCategory(res.data.response)
+            console.log(res);
+            setCategory(res.data.Categories)
 
         
         })
@@ -35,65 +44,41 @@ function CategorySection() {
     },[])
     const setCategoryID=(id,e)=>{
         e.preventDefault();
-        localStorage.setItem('category_id',id);
+        localStorage.setItem('cid',id);
         // if(e.target.dataset.activeCategory!==undefined)
         // {
-        //     e.target.style.border='2px solid #black';
+        //     e.target.style.border='2px solid blue';
         //     e.target.removeAttribute('data-wishlist');
         // }
         // else{
 
-        //     e.target.style;
+        //     e.target.style.border='none';
         //     e.target.setAttribute('data-wishlist','true');
         // }
         history.push('/category')
     }
 
-    const showSubCategory=()=>{
-        if(localStorage.getItem('category_id')==20){
-            return(
-                <>
-                <h3 className="category-heading2" style={{marginTop:"100px"}}>Fish</h3>
-                    <div className="cat-subcontainer" style={{justifyContent:'flex-start'}}>
-                            <div className="box2" style={{marginLeft:"50px"}}>
-                            <img src={river} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
-                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>River Fish</span>
-                        </div> 
-                        <div className="box2" style={{marginLeft:"50px"}}>
-                            <img src={sea} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
-                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>Sea Fish</span>
-                        </div> 
-                        
-                    </div>
-                    </>
-            )
-        }
-        else if(localStorage.getItem('category_id')==25){
-            return(
-                <>
-                <h3 className="category-heading2" style={{marginTop:"100px"}}>Crustaceans</h3>
-                    <div className="cat-subcontainer" style={{justifyContent:'flex-start'}}>
-                            <div className="box2" style={{marginLeft:"50px"}}>
-                            <img src={crab} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
-                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"10px"}}>Crabs</span>
-                        </div> 
-                        <div className="box2" style={{marginLeft:"50px"}}>
-                            <img src={lobster} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
-                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"10px"}}>Lobsters</span>
-                        </div> 
-                        <div className="box2" style={{marginLeft:"50px"}}>
-                            <img src={oyster} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
-                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"10px"}}>Oysters</span>
-                        </div> 
-                        <div className="box2" style={{marginLeft:"50px"}}>
-                            <img src={prawn} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
-                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"10px"}}>Prawns</span>
-                        </div> 
-                        
-                    </div>
-                    </>
-            )
-        }
+    
+
+    useEffect(()=>{
+
+        const cid=localStorage.getItem('cid')?localStorage.getItem('cid'):1;
+
+        axios.post(`http://proffus.pythonanywhere.com/api/products/category/${cid}/`)
+        .then(res=>{
+        
+            setSubcategories(res.data.Sub_Categories)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+
+        
+    },[subCategories])
+
+
+    const setScid=(scid)=>{
+        localStorage.setItem('scid',scid);
     }
     
 
@@ -102,11 +87,11 @@ function CategorySection() {
             <h3 className="category-heading">CATEGORIES</h3>
             <div className="cat-subcontainer">
             
-            {categories.map((item,index)=>{
-                const id=localStorage.getItem('category_id');
+            {categories && categories.map((item,index)=>{
+                const id=localStorage.getItem('cid');
                 return(
-                    <div className={`box ${item.category_id==id?"blueBorder":""}`} key={index} onClick={(e)=>{setCategoryID(item.category_id,e)}}>
-                        <img src={item.image} style={{width:"205px",height:"100px"}}/>
+                    <div className={`box ${item.cid==id?"blueBorder":""}`} key={index} onClick={(e)=>{setCategoryID(item.cid,e)}}>
+                        <img src={item.url} style={{width:"205px",height:"100px"}}/>
                         <span style={{fontSize:"16px",fontWeight:"500"}}>{item.name}</span>
                     </div>
                 )
@@ -116,37 +101,21 @@ function CategorySection() {
         
             
             
-            {/* <div className="box2">
-                <img src={sub1} style={{width:"310px",height:"188px",paddingBottom:"35px"}}/>
-                <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>SEA FISH</span>
-            </div>
-            <div className="box2" style={{marginLeft:"122px"}}>
-                <img src={sub2} style={{width:"310px",height:"188px",paddingBottom:"35px"}}/>
-                <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>RIVER FISH</span>
-            </div> */}
-            {/* {categories.map((item,index)=>{
-                if(item.category_id==localStorage.getItem('category_id')){
+            
+           
+            {<div className="cat-subcontainer" style={{justifyContent:'flex-start'}}>
+            
+            {subCategories && subCategories.map((sc,idx)=>{
                 return(
-                    <>
-                    {item.children && <h3 className="category-heading2" style={{marginTop:"100px"}}>{item.name}</h3>}
-                    <div className="cat-subcontainer">
-                    {item.children.map((c,i)=>{
-
-                        return(
-                            <div className="box2" style={{marginLeft:"50px"}} key={i}>
-                            <img src={c.image} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
-                            <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>{c.name}</span>
-                        </div> 
-                        )
-                    })
                     
-                    }
-                    </div>
-                    </>
+                    <div className="box2" style={{marginLeft:"50px"}} onClick={()=>setScid(sc.scid)}>
+                        <img src={river} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
+                        <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>{sc.name}</span>
+                    </div> 
+                    
                 )
-                }
-            })} */}
-            {showSubCategory()}
+            })}
+            </div>}
 
         
         <h3 className="category-heading3" style={{marginTop:"100px"}}>PRODUCTS</h3>
