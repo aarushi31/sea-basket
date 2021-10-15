@@ -4,6 +4,7 @@ import { useHistory } from 'react-router'
 import cross from '../../images/icons/cross.png'
 import eye from '../../images/icons/eye.png'
 import lock from '../../images/icons/lock.png'
+import axios from 'axios'
 
 
 function Payment() {
@@ -29,7 +30,7 @@ function Payment() {
         }
     }
 
-    const handleSubmit=()=>{
+    const handleSubmit=(e)=>{
         e.preventDefault();
         setMessage('');
         seterror('')
@@ -69,10 +70,10 @@ function Payment() {
 
     return (
         <div className="profile-container">
-            <center><h2 className="profile-heading">Login</h2></center>
+            <center><h2 className="profile-heading">Add Card</h2></center>
             <div className="form">
-                {error && <Alert variant="danger">{error}</Alert>}
-                <form onSubmit={handleSubmit}>
+                
+                <form onSubmit={(e)=>handleSubmit(e)}>
                     <div className="profile-row" style={{flexDirection:'column',justifyContent:'center',marginLeft:'20vw'}}>
                         <div className="input">
                             
@@ -91,15 +92,15 @@ function Payment() {
                         </div>
                         <div className="input" style={{marginTop:'50px'}}>
                             <img src={lock} alt="lock" className="input-icon"/>
-                            <input placeholder="New Password" type={newType} onChange={(e)=>setCvv(e.target.value)} value={cvv}/>
+                            <input placeholder="CVV" type={newType} onChange={(e)=>setCvv(e.target.value)} value={cvv}/>
                             <img src={eye} alt="visible" onClick={handleEye2} className="cross"/>
                         </div>
                     </div>
                     <div className="profile-row btn" style={{marginLeft:'16vw'}}>
-                        <button className="save" onClick={handleSubmit}>Add Card</button>
+                        <button className="save" onClick={(e)=>handleSubmit(e)}>Add Card</button>
                     </div>
-                    {message && <Alert variant="success">{message}</Alert>}
-                    {error && <Alert variant="danger">{error}</Alert>}
+                    {message && <Alert variant="success" style={{marginTop:'30px'}}>{message}</Alert>}
+                    {error && <Alert variant="danger" style={{marginTop:'30px'}}>{error}</Alert>}
                 </form>
             </div>
             

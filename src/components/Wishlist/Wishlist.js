@@ -14,26 +14,6 @@ function Wishlist() {
     const password=localStorage.getItem('password')
     const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
 
-
-    const [removed,setRemoved]=useState(false)
-    useEffect(()=>{
-        var config = {
-            method: 'post',
-            url: 'http://proffus.pythonanywhere.com/api/wishlist/',
-            headers: { 
-              'Authorization': `Basic ${token}`
-            }
-          };
-          
-          axios(config)
-          .then(function (response) {
-            console.log(JSON.stringify(response.data));
-            setItems(response.data.Wishlist)
-          })
-    },[])
-
-
-
     const removeWishlist=(pid,e)=>{
         e.preventDefault();
         
@@ -73,6 +53,26 @@ function Wishlist() {
         
     }
 
+    const [removed,setRemoved]=useState(false)
+    useEffect(()=>{
+        var config = {
+            method: 'post',
+            url: 'http://proffus.pythonanywhere.com/api/wishlist/',
+            headers: { 
+              'Authorization': `Basic ${token}`
+            }
+          };
+          
+          axios(config)
+          .then(function (response) {
+            // console.log(JSON.stringify(response.data));
+            setItems(response.data.Wishlist)
+          })
+    },[removeWishlist])
+
+
+
+    
     return (
         <>
         <div className="wishlist-container">

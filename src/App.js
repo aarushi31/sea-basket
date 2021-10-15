@@ -15,6 +15,9 @@ import {login} from './features/userSlice'
 import About from './components/About/About';
 import Wishlist from './components/Wishlist/Wishlist';
 import ChangePassword from './components/Profile/ChangePassword';
+import Order from './components/Orders/Order';
+import Payment from './components/Payment/Payment';
+import Pay from './components/Payment/Pay';
 
 
 //export const UserContext=createContext();
@@ -48,7 +51,9 @@ function App() {
         <Route path="/editprofile" component={Profile}/>
         <Route path="/wishlist" component={Wishlist}/>
         <Route path="/changePassword" component={ChangePassword}/>
-        
+        {/* <Route path="/placeOrder" component={Order}/> */}
+        <Route path="/make-payment" component={Payment}/>
+        <Route path="/pay" component={Pay}/>
       </Switch>
       
     </Router>

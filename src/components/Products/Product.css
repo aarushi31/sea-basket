@@ -142,6 +142,36 @@
     flex-wrap: wrap;
 }
 
+.select-address{
+    width: 100%;
+    padding: 60px 100px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.select-address span{
+    color: #0E79BD;
+    font-weight: 600;
+}
+
+
+.address{
+    width: fit-content;
+    padding: 30px;
+    border: 1px solid grey;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.activeAddress{
+    border: 1px solid #0E79BD;
+}
+
 @media screen and (max-width:760px) {
     .details,.prod-deets{
         flex-direction: column;

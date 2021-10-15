@@ -8,19 +8,44 @@ import Login from '../Login/Login';
 import axios from 'axios'
 import {useDispatch, useSelector} from 'react-redux';
 import {selectUser} from '../../features/userSlice'
-import { Redirect } from 'react-router'
+import { Redirect, useHistory } from 'react-router'
 
 function Cart() {
-    
+    const history=useHistory()
     const [cart,setCart]=useState([]);
     const user=useSelector(selectUser);
 
     const username=localStorage.getItem('customer_id');
     const password=localStorage.getItem('password')
     const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-
     
-   
+    
+    const handleRemove=(pid,e)=>{
+      e.preventDefault()
+      var data = JSON.stringify({
+          "pid": pid,
+          "quantity": 1
+        });
+        
+        var config = {
+          method: 'post',
+          url: 'http://proffus.pythonanywhere.com/api/removefromcart/',
+          headers: { 
+            'Authorization': `Basic ${token}`, 
+            'Content-Type': 'application/json'
+          },
+          data : data
+        };
+        
+        axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+  }
+
     
 
     useEffect(()=>{
@@ -36,39 +61,20 @@ function Cart() {
           
           axios(config)
           .then(function (response) {
-            console.log(JSON.stringify(response.data));
+            // console.log(JSON.stringify(response.data));
             setCart(response.data.Cart)
           })
           .catch(function (error) {
             console.log(error);
           });
           
-    },[])
+    },[handleRemove])
 
-    const handleRemove=(pid,e)=>{
-        e.preventDefault()
-        var data = JSON.stringify({
-            "pid": pid,
-            "quantity": 1
-          });
-          
-          var config = {
-            method: 'post',
-            url: 'http://proffus.pythonanywhere.com/api/removefromcart/',
-            headers: { 
-              'Authorization': `Basic ${token}`, 
-              'Content-Type': 'application/json'
-            },
-            data : data
-          };
-          
-          axios(config)
-          .then(function (response) {
-            console.log(JSON.stringify(response.data));
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+    
+
+
+    const addOrder=()=>{
+      history.push('/make-payment')
     }
    
 
@@ -103,7 +109,7 @@ function Cart() {
             
             </Container>
             <div className="buy-buttons" style={{justifyContent:'center',width:'100%'}}>
-                {cart.length!==0 && <button className="button buyNow">Place order</button>}
+                {cart.length!==0 && <button className="button buyNow"  onClick={addOrder}>Place order</button>}
                 {cart.length===0 && <center><span style={{fontSize:"30px",fontWeight:"500",color:"#0E79BD"}}>Cart is empty</span></center>}
             </div>
             </Container>
