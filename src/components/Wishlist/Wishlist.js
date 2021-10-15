@@ -65,7 +65,7 @@ function Wishlist() {
           
           axios(config)
           .then(function (response) {
-            // console.log(JSON.stringify(response.data));
+            //console.log(JSON.stringify(response.data));
             setItems(response.data.Wishlist)
           })
     },[removeWishlist])
@@ -81,7 +81,7 @@ function Wishlist() {
                 {items && items.map((item,idx)=>{
                     return(
                         <div className="product" key={item.pid}>
-                            <img src={catla} alt="product-img" className="product-img"/>
+                            <img src={item.image_url} alt="product-img" className="product-img"/>
                             <span className="prod-name">{item.name}</span>
                             <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
                             <div style={{display:'flex',width:'100%',justifyContent:'space-evenly'}}>

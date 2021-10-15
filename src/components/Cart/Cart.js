@@ -100,8 +100,8 @@ function Cart() {
                         <span className="remove-item" onClick={(e)=>handleRemove(item.pid,e)}>Remove Item</span>
                     </div>
                 </Col>
-                <Col>2</Col>
-                <Col>₹ 1200.00</Col>
+                <Col>{item.quantity}</Col>
+                <Col>₹ {item.quantity * item.after_sale_price}</Col>
             </Row>
                 )
             })}

@@ -8,7 +8,8 @@ import heart_filled from '../../../images/icons/heart_filled.svg'
 
 function Products() {
 
-    const [products,setProducts]=useState([]);
+    //const [ProductArray,setProducts]=useState([]);
+    const [ProductData,setPData]=useState([])
     const username=localStorage.getItem('customer_id');
     const password=localStorage.getItem('password')
     const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
@@ -20,17 +21,47 @@ function Products() {
         }
     }
 
+    
+
+    const scid=localStorage.getItem('scid')?localStorage.getItem('scid'):1;
     useEffect(()=>{
-        const scid=localStorage.getItem('scid')?localStorage.getItem('scid'):1;
-        axios.post('http://proffus.pythonanywhere.com/api/products/',config)
+        
+        const cid=localStorage.getItem('cid');
+        axios.post(`http://proffus.pythonanywhere.com/api/products/subcategory/${scid}/`,config)
         .then(res=>{
             console.log(res);
-            setProducts(res.data.Products);
+            let ProductArray=[]
+            let pD=[];
+            ProductArray=res.data.Products;
+        
+            console.log(ProductArray.length);
+            let index = 0
+            let numberofproducts = ProductArray.length
+            console.log('Number of products', numberofproducts);
+            for(index=0;index < numberofproducts;index++) {
+                let num = ProductArray[index]
+                console.log('Index', index);
+                axios({
+                    method: 'POST',
+                    url: `https://proffus.pythonanywhere.com/api/getProduct/p_id/${num}/`,
+
+                }).then(res => {
+                    //  console.log(res.data.Detail);
+                    pD.push(res.data.Detail)
+                    // console.log(ProductData)
+                }).catch(err => { console.log(err); })
+                   
+
+            }
+            setPData(pD)
+            console.log(ProductData)
         })
         .catch(err=>{
             console.log(err)
         })
-    },[])
+    },[]);
+
+
     const [added, setAdded] = useState(false);
 
     const addWishlist=(pid,e)=>{
@@ -71,6 +102,9 @@ function Products() {
             e.target.setAttribute('data-wishlist','true');
         }
     }
+    
+
+    
 
 
 
@@ -101,9 +135,12 @@ function Products() {
             <hr className="line2"/>
             {/* <h3 className="product-headings">Our Bestsellers</h3> */}
             <div className="products">
-                {products.map((item,index)=>{ 
+                {ProductData.map((item,index)=>{ 
+                    //console.log(item)
                     return(
-                        <div className="product">
+                       
+                        <div className="product" key={index}>
+                            
                             <img src={item.image_url} alt="product-img" className="product-img"/>
                             <span className="prod-name">{item.name}</span>
                             <span className="disc-price">₹ {item.after_sale_price?parseFloat(item.after_sale_price):parseFloat(item.actual_price)}</span>
@@ -122,4 +159,4 @@ function Products() {
     )
 }
 
-export default Products
+export default Products;
