@@ -41,6 +41,7 @@ function Cart() {
         axios(config)
         .then(function (response) {
           console.log(JSON.stringify(response.data));
+          history.push('/cart')
           
         })
         .catch(function (error) {
@@ -66,12 +67,13 @@ function Cart() {
             // console.log(JSON.stringify(response.data));
             setCart(response.data.Cart)
             settotalPrice(response.data.total_price)
+            
           })
           .catch(function (error) {
             console.log(error);
           });
           
-    },[handleRemove])
+    },[])
 
     
 

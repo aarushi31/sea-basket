@@ -153,6 +153,7 @@ function Product() {
         data :''
     };
     const [address,setAddress]=useState([])
+    const [aid,setAid]=useState()
 
     useEffect(()=>{
 
@@ -165,13 +166,14 @@ function Product() {
         .then(res=>{
             console.log(res)
             setAddress(res.data.Address);
+            setAid(res.data.Address[0].address_id)
         })
         .catch(err=>{
             console.log(err)
         })
     },[])
 
-    const [aid,setAid]=useState()
+    
 
     console.log(aid)
 
@@ -207,7 +209,7 @@ function Product() {
             "quantity": parseInt(amt),
             "option_id": parseInt(option_id)
           });
-
+          console.log(pid)
           localStorage.setItem('amt',amt);
           localStorage.setItem('pid',pid);
           
