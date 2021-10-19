@@ -14,6 +14,7 @@ function Cart() {
     const history=useHistory()
     const [cart,setCart]=useState([]);
     const user=useSelector(selectUser);
+    const [total_price,settotalPrice]=useState();
 
     const username=localStorage.getItem('customer_id');
     const password=localStorage.getItem('password')
@@ -40,6 +41,7 @@ function Cart() {
         axios(config)
         .then(function (response) {
           console.log(JSON.stringify(response.data));
+          
         })
         .catch(function (error) {
           console.log(error);
@@ -63,6 +65,7 @@ function Cart() {
           .then(function (response) {
             // console.log(JSON.stringify(response.data));
             setCart(response.data.Cart)
+            settotalPrice(response.data.total_price)
           })
           .catch(function (error) {
             console.log(error);
@@ -90,27 +93,32 @@ function Cart() {
                 <Col><b>PRICE</b></Col>
             </Row>
             {cart && cart.map((item,idx)=>{
+              // console.log(item.total_price)
                 return(
                     <Row style={{marginTop:'30px'}} key={idx}>
                 <Col className="item-col">
                     <img src={item.image_url} style={{width:'150px',borderRadius:'12px'}}/>
                     <div className="item-details">
                         <span><b>{item.name}</b></span>
-                        <span>₹ {parseFloat(item.after_sale_price)}</span>
+                        {/* <span>₹ {item.total_price}</span> */}
                         <span className="remove-item" onClick={(e)=>handleRemove(item.pid,e)}>Remove Item</span>
                     </div>
                 </Col>
                 <Col>{item.quantity}</Col>
-                <Col>₹ {item.quantity * item.after_sale_price}</Col>
+                <Col>₹ {item.total_price}</Col>
             </Row>
                 )
             })}
-            
+            <Row>
+              <Col>Total Price : ₹{total_price}</Col>
+            </Row>
             
             </Container>
             <div className="buy-buttons" style={{justifyContent:'center',width:'100%'}}>
-                {cart.length!==0 && <button className="button buyNow"  onClick={addOrder}>Place order</button>}
-                {cart.length===0 && <center><span style={{fontSize:"30px",fontWeight:"500",color:"#0E79BD"}}>Cart is empty</span></center>}
+            
+                {cart && <button className="button buyNow"  onClick={addOrder}>Place order</button>}
+
+                {!cart && <center><span style={{fontSize:"30px",fontWeight:"500",color:"#0E79BD"}}>Cart is empty</span></center>}
             </div>
             </Container>
             <Footer/>

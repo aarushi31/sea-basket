@@ -24,6 +24,19 @@ function Product() {
     const [optionId1,setOptionId1]=useState();
     const [optionId2,setOptionId2]=useState();
     const [optionId3,setOptionId3]=useState();
+
+    const [p1,setP1]=useState()
+    const [p2,setP2]=useState()
+    const [p3,setP3]=useState()
+
+    const [w1,setw1]=useState()
+    const [w2,setw2]=useState()
+    const [w3,setw3]=useState()
+
+    const [orig1,setorig1]=useState()
+    const [orig2,setorig2]=useState()
+    const [orig3,setorig3]=useState()
+
     const [sale,setSale]=useState();
     const [actual,setActual]=useState()
     const [inStock,setInstock]=useState()
@@ -49,11 +62,31 @@ function Product() {
             setName(res.data.Detail.name);
             setDesc(res.data.Detail.description);
             setSpec(res.data.Detail.specification);
-            setSale(res.data.Detail.after_sale_price);
-            setActual(res.data.Detail.actual_price);
-            setOptionId1(res.data.Detail.options[0].option_id)
-            setOptionId2(res.data.Detail.options[1].option_id)
-            setOptionId3(res.data.Detail.options[2].option_id)
+            setSale(res.data.Detail.options[1].after_sale_price);
+            setActual(res.data.Detail.options[1].actual_price);
+
+            setP1(res.data.Detail.options[0].after_sale_price)
+            setP2(res.data.Detail.options[1].after_sale_price)
+            setP3(res.data.Detail.options[2].after_sale_price)
+
+            setorig1(res.data.Detail.options[0].actual_price)
+            setorig2(res.data.Detail.options[1].actual_price)
+            setorig3(res.data.Detail.options[2].actual_price)
+
+            setOptionId1(res.data.Detail.options[0].options_id)
+            setOptionId2(res.data.Detail.options[1].options_id)
+            setOptionId3(res.data.Detail.options[2].options_id)
+
+            setOptionId(res.data.Detail.options[1].options_id)
+
+            let str=res.data.Detail.options[0].name;
+            let str2=res.data.Detail.options[1].name;
+            let str3=res.data.Detail.options[2].name;
+            setw1(str.substr(str.indexOf(' ')+1))
+            setw2(str2.substr(str2.indexOf(' ')+1))
+            setw3(str3.substr(str3.indexOf(' ')+1))
+
+
             setUrl(res.data.Detail.image_url)
             
             if(res.data.Detail.in_stock==1 || res.data.Detail.in_stock==true || res.data.Detail.in_stock=="True"){
@@ -84,20 +117,30 @@ function Product() {
     const [price,setPrice]=useState();
 
     console.log(price)
+
+
     const handlePrice=(p,oid)=>{
         setExtra(p);
-        setPrice(extra+Pprice)
+        setPrice(Pprice)
         if(oid==1){
             setOptionId(optionId1);
+            
+            setSale(p1);
+            setActual(orig1)
         }
         else if(oid==2){
             setOptionId(optionId2);
+            setSale(p2);
+            setActual(orig2)
+
         }
         else if(oid==3){
             setOptionId(optionId3);
+            setSale(p3)
+            setActual(orig3)
         }
 
-        console.log(option_id)
+        console.log("oid",option_id)
         localStorage.setItem('oid',option_id)
     }
 
@@ -155,10 +198,10 @@ function Product() {
         e.preventDefault();
         setMessage('');
 
-        if(!option_id){
-            window.alert('Please select any option(Small, Medium, Large)');
-        }
-        else{
+        // if(!option_id){
+        //     window.alert('Please select any option(Small, Medium, Large)');
+        // }
+        // else{
         var data = JSON.stringify({
             "pid": parseInt(pid),
             "quantity": parseInt(amt),
@@ -226,7 +269,7 @@ function Product() {
             console.log(error);
           });
 
-        }
+        
           
     }
 
@@ -240,7 +283,7 @@ function Product() {
                 <div className="prod-deets">
                     <div className="name-price">
                         <span style={{fontSize:"24px",fontWeight:"600"}}>{name}</span>
-                        <span style={{fontSize:"20px",color:'#0E79BD'}}>₹ {parseFloat(Pprice+extra)}</span>
+                        <span style={{fontSize:"20px",color:'#0E79BD'}}>₹ {parseFloat(sale)}</span>
                         {actual && <span style={{fontSize:'18px',color:'gray',textDecoration:'line-through'}}>₹ {parseFloat(actual)}</span>}
 
                     </div>
@@ -260,9 +303,9 @@ function Product() {
                     </div> */}
                     <p style={{fontWeight:'600'}}>Select option</p>
                 <div className="options">
-                    <span className={`opt ${extra===10 ? "activeOpt":""}`} onClick={()=>handlePrice(10,1)}>Small(+10.00)</span>
-                    <span className={`opt ${extra===20 ? "activeOpt":""}`} onClick={()=>handlePrice(20,2)}>Medium(+20.00)</span>
-                    <span className={`opt ${extra===30 ? "activeOpt":""}`} onClick={()=>handlePrice(30,3)}>Large(+30.00)</span>
+                    <span className={`opt ${extra===10 ? "activeOpt":""}`} onClick={()=>handlePrice(10,1)}>Small {w1}</span>
+                    <span className={`opt ${extra===20 ? "activeOpt":""}`} onClick={()=>handlePrice(20,2)}>Medium {w2}</span>
+                    <span className={`opt ${extra===30 ? "activeOpt":""}`} onClick={()=>handlePrice(30,3)}>Large {w3}</span>
                 </div>
                 {/* <hr style={{width:'40vw',background:'black',marginRight:'40px'}}/> */}
                 <div className="amt-container">
@@ -298,7 +341,7 @@ function Product() {
                 address.map((add,idx)=>{
                     const id=localStorage.getItem('aid');
                     return(
-                    <div onClick={()=>{setAid(add.address_id);localStorage.setItem('aid',aid)}} className={`address ${id && id==add.address_id?"activeAddress":""}`}>
+                    <div onClick={()=>{setAid(add.address_id);localStorage.setItem('aid',aid)}} className={`address ${id==add.address_id?"activeAddress":""}`}>
                         <p><b>{add.first_name} {add.last_name}</b></p>
                         <p>{add.address1}</p>
                         <p>{add.address2}</p>

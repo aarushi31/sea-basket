@@ -240,8 +240,8 @@ function CategorySection() {
                             
                             <img src={item.image_url} alt="product-img" className="product-img"/>
                             <span className="prod-name">{item.name}</span>
-                            <span className="disc-price">₹ {item.after_sale_price?parseFloat(item.after_sale_price):parseFloat(item.actual_price)}</span>
-                            {item.after_sale_price && <span className="orig-price">₹ {parseFloat(item.actual_price)}</span>}
+                            <span className="disc-price">₹ {item.after_sale_price?item.options[1].after_sale_price:item.options[1].actual_price}</span>
+                            {item.options[1].after_sale_price && <span className="orig-price">₹ {item.options[1].actual_price}</span>}
                             <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
                             <div style={{display:'flex',width:'100%',justifyContent:'space-evenly'}}>
                             <span className="add"><Link to={{pathname: `/product/${item.pid}`}}>Add to cart</Link></span>

@@ -169,7 +169,7 @@
     cursor: pointer;
 }
 .activeAddress{
-    border: 1px solid #0E79BD;
+    border: 2px solid #0E79BD;
 }
 
 @media screen and (max-width:760px) {
