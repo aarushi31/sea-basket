@@ -200,7 +200,7 @@ function CategorySection() {
                 return(
                     
                     <div className="box2" style={{marginLeft:"50px",cursor:'pointer'}} onClick={()=>handleProduct(sc.scid)}>
-                        <img src={river} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
+                        <img src={sc.url} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
                         <span style={{fontSize:"16px",fontWeight:"500",marginTop:"20px"}}>{sc.name}</span>
                     </div> 
                     
