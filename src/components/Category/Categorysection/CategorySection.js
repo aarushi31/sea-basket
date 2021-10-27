@@ -192,12 +192,13 @@ function CategorySection() {
         
             
             
-            
+        <h3 className="category-heading" style={{marginTop:'80px',marginLeft:'40px'}}>SUB CATEGORIES</h3>
            
             {<div className="cat-subcontainer" style={{justifyContent:'flex-start'}}>
             
             {subCategories && subCategories.map((sc,idx)=>{
                 return(
+
                     
                     <div className="box2" style={{marginLeft:"50px",cursor:'pointer'}} onClick={()=>handleProduct(sc.scid)}>
                         <img src={sc.url} style={{width:"210px",height:"188px",paddingBottom:"35px"}}/>
@@ -240,8 +241,8 @@ function CategorySection() {
                             
                             <img src={item.image_url} alt="product-img" className="product-img"/>
                             <span className="prod-name">{item.name}</span>
-                            <span className="disc-price">₹ {item.after_sale_price?item.options[1].after_sale_price:item.options[1].actual_price}</span>
-                            {item.options[1].after_sale_price && <span className="orig-price">₹ {item.options[1].actual_price}</span>}
+                            <span className="disc-price">₹ {item.options[1].after_sale_price}</span>
+                            <span className="orig-price">₹ {item.options[1].actual_price}</span>
                             <hr style={{width:"100%",backgroundColor:"gray",opacity:"0.4"}}/>
                             <div style={{display:'flex',width:'100%',justifyContent:'space-evenly'}}>
                             <span className="add"><Link to={{pathname: `/product/${item.pid}`}}>Add to cart</Link></span>
